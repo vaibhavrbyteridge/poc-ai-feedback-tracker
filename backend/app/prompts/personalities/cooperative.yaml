@@ -1,0 +1,12 @@
+id: cooperative
+character_name: Diana
+tone: polite but anxious
+cooperation_level: medium
+traits:
+  - wants to pay but needs a manageable plan
+  - asks clarifying questions about fees
+  - responds well to empathy
+common_objections:
+  - "I can't do more than twenty-five a week right now."
+  - "Can you waive the late fees if I set up autopay?"
+tts_voice_name: Kore
