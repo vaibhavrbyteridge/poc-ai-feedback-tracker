@@ -10,4 +10,4 @@ common_objections:
   - "I'm in a meeting — text me."
   - "My lawyer handles this stuff."
   - "The balance isn't right; fix it first."
-tts_voice_name: Fenrir
+tts_voice_name: en-US-DavisNeural

@@ -10,7 +10,8 @@ class Settings(BaseSettings):
     )
 
     assemblyai_api_key: str = ""
-    gemini_api_key: str = ""
+    groq_api_key: str = ""
+    groq_model: str = "llama-3.3-70b-versatile"
     database_url: str = "postgresql://postgres:postgres@localhost:5432/debt_sim"
     cors_origins: str = "http://localhost:5173"
     force_mock_stt: bool = False

@@ -16,11 +16,11 @@ def get_stt() -> UtteranceSTT:
 
 def get_llm() -> MockLLM:
     settings = get_settings()
-    if settings.force_mock_llm or not settings.gemini_api_key:
+    if settings.force_mock_llm or not settings.groq_api_key:
         return MockLLM()
-    from app.providers.gemini_llm import GeminiLLM
+    from app.providers.groq_llm import GroqLLM
 
-    return GeminiLLM()
+    return GroqLLM()
 
 
 def get_customer_llm() -> CustomerLLM:
@@ -33,8 +33,8 @@ def get_copilot_llm() -> CopilotLLM:
 
 def get_tts() -> UtteranceTTS:
     settings = get_settings()
-    if settings.force_mock_tts or not settings.gemini_api_key:
+    if settings.force_mock_tts:
         return MockUtteranceTTS()
-    from app.providers.gemini_tts import GeminiUtteranceTTS
+    from app.providers.edge_tts import EdgeUtteranceTTS
 
-    return GeminiUtteranceTTS()
+    return EdgeUtteranceTTS()

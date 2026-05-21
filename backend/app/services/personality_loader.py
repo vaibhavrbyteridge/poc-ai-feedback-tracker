@@ -28,7 +28,7 @@ class PersonalityLoader:
             p = yaml.safe_load(f)
 
         system_prompt = self._jinja.get_template("customer_system.j2").render(p=p)
-        voice = VoiceConfig(tts_voice_name=p.get("tts_voice_name", "Charon"))
+        voice = VoiceConfig(tts_voice_name=p.get("tts_voice_name", "en-US-GuyNeural"))
         return system_prompt, voice
 
 

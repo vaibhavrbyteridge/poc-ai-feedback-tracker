@@ -7,7 +7,9 @@ Training simulator: human collector (push-to-talk) ↔ AI customer (personality 
 - **Backend:** FastAPI, utterance-batch STT/TTS, WebSocket turns
 - **Frontend:** Vite + React + TypeScript
 - **STT:** AssemblyAI async (live when `ASSEMBLYAI_API_KEY` set)
-- **LLM/TTS:** Gemini (live when `GEMINI_API_KEY` set); mocks otherwise
+- **LLM:** Groq chat completions (live when `GROQ_API_KEY` set)
+- **TTS:** Edge TTS (no API key; AssemblyAI has no standalone utterance TTS—only inside [Voice Agent API](https://www.assemblyai.com/docs/voice-agents))
+- Mocks when keys missing or `FORCE_MOCK_*` is true
 
 ## Quick start
 

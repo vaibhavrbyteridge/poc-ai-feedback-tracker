@@ -6,7 +6,7 @@ from app.domain.models import Message
 
 @dataclass
 class VoiceConfig:
-    tts_voice_name: str = "Charon"
+    tts_voice_name: str = "en-US-GuyNeural"
 
 
 class UtteranceSTT(Protocol):

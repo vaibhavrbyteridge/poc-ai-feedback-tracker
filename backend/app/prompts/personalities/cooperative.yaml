@@ -9,4 +9,4 @@ traits:
 common_objections:
   - "I can't do more than twenty-five a week right now."
   - "Can you waive the late fees if I set up autopay?"
-tts_voice_name: Kore
+tts_voice_name: en-US-JennyNeural

@@ -67,11 +67,17 @@ class Orchestrator:
         session.turns.append(turn)
         session_store.update(session)
 
+        audio_mime = (
+            "audio/wav"
+            if len(customer_audio) >= 4 and customer_audio[:4] == b"RIFF"
+            else "audio/mpeg"
+        )
+
         return {
             "collector_transcript": collector_transcript,
             "customer_text": customer_text,
             "customer_audio_base64": base64.b64encode(customer_audio).decode("ascii"),
-            "customer_audio_mime": "audio/wav",
+            "customer_audio_mime": audio_mime,
             "suggestions": suggestions,
         }
 

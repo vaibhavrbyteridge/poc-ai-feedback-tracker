@@ -4,7 +4,7 @@ from app.services.personality_loader import personality_loader
 def test_render_defensive():
     prompt, voice = personality_loader.render("defensive")
     assert "Marcus" in prompt
-    assert voice.tts_voice_name == "Charon"
+    assert voice.tts_voice_name == "en-US-GuyNeural"
 
 
 def test_list_personalities():
