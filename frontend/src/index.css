@@ -1,141 +1,231 @@
-:root {
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
-  color: #e8eaed;
-  background: #0f1419;
-}
+@import "tailwindcss";
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-}
-
-#root {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 1.5rem;
-}
-
-h1 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem;
-}
-
-button {
-  cursor: pointer;
-  font: inherit;
-}
-
-.app-layout {
-  display: grid;
-  gap: 1rem;
-}
-
-.card {
-  background: #1a2332;
-  border: 1px solid #2d3a4d;
-  border-radius: 8px;
-  padding: 1rem;
-}
-
-.transcript {
-  min-height: 200px;
-  max-height: 360px;
-  overflow-y: auto;
-}
-
-.turn {
-  margin-bottom: 0.75rem;
-}
-
-.turn-collector {
-  color: #7eb8ff;
-}
-
-.turn-customer {
-  color: #a8b0ba;
-}
-
-.mic-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
+/* Keep essential custom styles for conversation components */
 .mic-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  border: none;
+  @apply px-6 py-3 rounded-full border-none text-white font-medium;
   background: #3d5a80;
-  color: #fff;
 }
 
 .mic-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  @apply opacity-50 cursor-not-allowed;
 }
 
 .mic-btn.recording {
-  background: #c45c5c;
-}
-
-.processing {
-  color: #f0c674;
-}
-
-.suggestions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  @apply bg-red-500 animate-pulse;
 }
 
 .suggestion-chip {
-  text-align: left;
-  padding: 0.6rem 0.8rem;
-  border-radius: 6px;
-  border: 1px solid #3d5a80;
-  background: #243044;
-  color: #e8eaed;
+  @apply text-left p-3 rounded-lg border border-gray-200 bg-white cursor-pointer flex flex-col gap-1 transition-colors hover:bg-blue-50;
 }
 
-.suggestion-chip:hover {
-  background: #2d3f5c;
+.suggestion-chip.tone-empathetic {
+  @apply border-l-4 border-l-teal-400;
 }
 
-.setup-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.suggestion-chip.tone-firm {
+  @apply border-l-4 border-l-red-400;
 }
 
-.setup-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.9rem;
+.suggestion-chip.tone-neutral {
+  @apply border-l-4 border-l-gray-400;
 }
 
-.setup-form select,
-.setup-form input {
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #2d3a4d;
-  background: #0f1419;
-  color: #e8eaed;
+.tone-badge {
+  @apply text-xs font-semibold uppercase tracking-wide;
 }
 
-.setup-form button[type="submit"] {
-  padding: 0.6rem;
-  border: none;
-  border-radius: 6px;
-  background: #4a7c59;
-  color: #fff;
+.tone-empathetic .tone-badge {
+  @apply text-teal-600;
 }
 
-.error {
-  color: #e06c75;
+.tone-firm .tone-badge {
+  @apply text-red-600;
+}
+
+.tone-neutral .tone-badge {
+  @apply text-gray-500;
+}
+
+.suggestion-text {
+  @apply text-sm text-gray-700;
+}
+
+
+/* Phase Tracker */
+.phase-tracker {
+  @apply bg-gray-50 border border-gray-200 rounded-lg p-4 flex flex-col gap-3;
+}
+
+.phase-steps {
+  @apply flex items-center gap-1 flex-wrap;
+}
+
+.phase-step {
+  @apply flex items-center gap-1 px-2 py-1 rounded text-xs text-gray-500 bg-white;
+}
+
+.phase-step.current {
+  @apply bg-blue-50 text-blue-700 border border-blue-200 font-semibold;
+}
+
+.phase-step.completed {
+  @apply text-green-600;
+}
+
+.phase-arrow {
+  @apply text-gray-300 mx-0.5;
+}
+
+.phase-icon {
+  @apply text-sm;
+}
+
+.phase-label {
+  @apply text-xs;
+}
+
+.phase-next-step {
+  @apply flex items-start gap-2 px-3 py-2 bg-blue-50 rounded border-l-3 border-l-blue-500;
+}
+
+.next-step-icon {
+  @apply text-sm;
+}
+
+.next-step-text {
+  @apply text-sm text-gray-700 leading-relaxed;
+}
+
+.phase-alerts {
+  @apply flex flex-col gap-1;
+}
+
+.phase-alert {
+  @apply flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded text-xs text-red-700;
+}
+
+.alert-icon {
+  @apply text-sm;
+}
+
+.phase-compliance {
+  @apply flex gap-4 text-xs;
+}
+
+.check-done {
+  @apply text-green-600;
+}
+
+.check-pending {
+  @apply text-gray-400;
+}
+
+/* Top Performer Scripts */
+.top-performer {
+  @apply bg-green-50 border border-green-200 border-l-4 border-l-green-500 rounded-lg p-3;
+}
+
+.top-performer-header {
+  @apply flex items-center gap-2 mb-2;
+}
+
+.top-performer-icon {
+  @apply text-sm;
+}
+
+.top-performer-title {
+  @apply text-xs font-semibold text-green-700 uppercase tracking-wide;
+}
+
+.top-performer-examples {
+  @apply flex flex-col gap-2;
+}
+
+.top-performer-example {
+  @apply m-0 text-xs text-gray-600 leading-relaxed italic pl-2 border-l-2 border-l-green-200;
+}
+
+/* Classification Badge */
+.classification-badge {
+  @apply bg-gray-50 border border-gray-200 rounded-lg p-3 border-l-4;
+}
+
+.cls-header {
+  @apply flex items-center gap-2;
+}
+
+.cls-icon {
+  @apply text-base;
+}
+
+.cls-label {
+  @apply font-semibold text-sm text-gray-800;
+}
+
+.cls-confidence {
+  @apply ml-auto text-xs font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600;
+}
+
+.cls-reasoning {
+  @apply mt-2 text-xs text-gray-500 leading-relaxed;
+}
+
+.cls-hardship {
+  @apply border-l-teal-400;
+}
+
+.cls-hardship .cls-confidence {
+  @apply text-teal-600;
+}
+
+.cls-delay {
+  @apply border-l-red-400;
+}
+
+.cls-delay .cls-confidence {
+  @apply text-red-600;
+}
+
+.cls-dispute {
+  @apply border-l-yellow-400;
+}
+
+.cls-dispute .cls-confidence {
+  @apply text-yellow-600;
+}
+
+.cls-confusion {
+  @apply border-l-purple-400;
+}
+
+.cls-confusion .cls-confidence {
+  @apply text-purple-600;
+}
+
+.cls-cooperative {
+  @apply border-l-green-400;
+}
+
+.cls-cooperative .cls-confidence {
+  @apply text-green-600;
+}
+
+.cls-override {
+  @apply mt-2 flex items-center gap-2;
+}
+
+.cls-override-label {
+  @apply text-xs text-gray-500 whitespace-nowrap;
+}
+
+.cls-override-select {
+  @apply flex-1 px-2 py-1 rounded border border-gray-300 bg-white text-gray-800 text-xs cursor-pointer;
+}
+
+.cls-override-select:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.cls-overridden {
+  @apply ml-1 text-xs font-normal text-yellow-600;
 }

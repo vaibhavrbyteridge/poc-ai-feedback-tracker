@@ -1,0 +1,14 @@
+{
+  "name": "use-groq-provider",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Debt Collection Conversation Simulator - Full Stack",
+  "scripts": {
+    "build:backend": "cd backend && python -m venv .venv && .venv\\Scripts\\pip install -r requirements.txt",
+    "build:frontend": "cd frontend && npm install",
+    "build": "npm run build:backend && npm run build:frontend",
+    "start:backend": "cd backend && .venv\\Scripts\\uvicorn app.main:app --reload --port 8000",
+    "start:frontend": "cd frontend && npm run dev",
+    "start": "start cmd /k npm run start:backend && start cmd /k npm run start:frontend"
+  }
+}

@@ -7,6 +7,6 @@ def data_dir() -> Path:
         Path("/data"),
     ]
     for path in candidates:
-        if (path / "seed_customers.json").exists():
+        if (path / "debt_data_sample.json").exists():
             return path
     return candidates[0]

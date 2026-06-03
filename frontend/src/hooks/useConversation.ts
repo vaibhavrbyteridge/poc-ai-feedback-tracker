@@ -5,18 +5,41 @@ import {
   sendUtterance,
   WsInbound,
 } from "../api/wsClient";
+import { fetchOpeningSuggestions } from "../api/client";
+
+export interface Suggestion {
+  text: string;
+  tone: "empathetic" | "firm" | "neutral";
+}
+
+export interface Classification {
+  classification: string;
+  confidence: number;
+  reasoning: string;
+}
+
+export interface PhaseInfo {
+  current_phase: string;
+  phases_completed: string[];
+  next_step: string;
+  alerts: string[];
+  compliance_disclosed: boolean;
+  identity_verified: boolean;
+}
 
 export interface TranscriptTurn {
   collector: string;
   customer: string;
-  suggestions: string[];
+  suggestions: Suggestion[];
 }
 
 export function useConversation(sessionId: string | null) {
   const [turns, setTurns] = useState<TranscriptTurn[]>([]);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [classification, setClassification] = useState<Classification | null>(null);
+  const [phaseInfo, setPhaseInfo] = useState<PhaseInfo | null>(null);
   const socketRef = useRef<WebSocket | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
@@ -46,6 +69,19 @@ export function useConversation(sessionId: string | null) {
           },
         ]);
         setSuggestions(msg.suggestions);
+        setClassification({
+          classification: msg.classification,
+          confidence: msg.confidence,
+          reasoning: msg.reasoning,
+        });
+        setPhaseInfo({
+          current_phase: msg.current_phase,
+          phases_completed: msg.phases_completed,
+          next_step: msg.next_step,
+          alerts: msg.alerts,
+          compliance_disclosed: msg.compliance_disclosed,
+          identity_verified: msg.identity_verified,
+        });
         playCustomerAudio(
           msg.customer_audio_base64,
           msg.customer_audio_mime,
@@ -55,6 +91,31 @@ export function useConversation(sessionId: string | null) {
     });
 
     socketRef.current = socket;
+
+    // Fetch opening suggestions
+    fetchOpeningSuggestions(sessionId)
+      .then((data) => {
+        setSuggestions(data.suggestions as Suggestion[]);
+        if (data.classification) {
+          setClassification({
+            classification: data.classification,
+            confidence: data.confidence,
+            reasoning: data.reasoning,
+          });
+        }
+        if (data.current_phase) {
+          setPhaseInfo({
+            current_phase: data.current_phase,
+            phases_completed: data.phases_completed || [],
+            next_step: data.next_step || "",
+            alerts: data.alerts || [],
+            compliance_disclosed: data.compliance_disclosed || false,
+            identity_verified: data.identity_verified || false,
+          });
+        }
+      })
+      .catch(() => {});
+
     return () => {
       socket.close();
       socketRef.current = null;
@@ -128,6 +189,8 @@ export function useConversation(sessionId: string | null) {
     processing,
     error,
     suggestions,
+    classification,
+    phaseInfo,
     startRecording,
     stopRecordingAndSend,
   };

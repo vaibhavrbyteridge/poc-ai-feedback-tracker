@@ -30,7 +30,8 @@ class CopilotLLM(Protocol):
         customer_utterance: str,
         rag_context: str | None,
         company_name: str,
-    ) -> list[str]: ...
+        corrections: list[dict] | None = None,
+    ) -> dict: ...
 
 
 class UtteranceTTS(Protocol):

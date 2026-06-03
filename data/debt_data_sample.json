@@ -1,0 +1,1762 @@
+[
+  {
+    "accountInfo": {
+      "accountHolder": "David Chen",
+      "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+      "accountNumber": "DC-4002",
+      "accountType": "Credit Card",
+      "daysPastDue": 45,
+      "defaultReason": "Multiple missed payments",
+      "loanDetails": {
+        "disbursementDate": "2023-05-15",
+        "interestAmount": 2800.0,
+        "interestPaid": 0.0,
+        "interestPending": 2800.0,
+        "interestRate": 18.5,
+        "lateFeesAccrued": 450.0,
+        "loanTerm": 36,
+        "maturityDate": "2026-05-15",
+        "principalAmount": 12500.0,
+        "principalPaid": 1300.0,
+        "principalPending": 11200.0,
+        "totalLoanAmount": 15300.0,
+        "totalPaid": 1300.0,
+        "totalPending": 14000.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2023-06-15",
+        "frequency": "Monthly",
+        "id": "pp-dc-emi",
+        "installmentsPaid": 5,
+        "installmentsRemaining": 31,
+        "lastPaymentDate": "2026-05-15",
+        "monthlyInstallment": 425.0,
+        "nextPaymentDate": "2025-11-15",
+        "paymentDay": 15,
+        "paymentMethod": "Credit Card",
+        "status": "Delinquent",
+        "totalInstallments": 36,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "789 Financial Street",
+      "address2": "Suite 302",
+      "cPhone": 4155552891,
+      "city": "San Francisco",
+      "country": "USA",
+      "description": "Credit card debt collection",
+      "dob": "1985-07-15T00:00:00",
+      "email": "david.chen@email.com",
+      "fullAddress": "789 Financial Street Suite 302 San Francisco CA 94105",
+      "fullName": "David Chen",
+      "hPhone": 4155553847,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "CA",
+      "timezone": "PST",
+      "zipCode": 94105
+    },
+    "notes": [
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2023-05-15T10:00:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "Initial account setup. Credit card account opened with $12,500 credit limit.",
+        "descriptionType": "Consultation",
+        "id": "note-dc-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-20T09:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Agent Collector assigned to 'Jessica Martinez' by workflow auto account assignment.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-dc-002",
+        "isPinned": false,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-16T10:30:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Credit card payment of $425 failed - Card Declined. Late fee of $50 applied.",
+        "descriptionType": "Payment",
+        "id": "note-dc-003",
+        "isPinned": false,
+        "subType": "Credit Card",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-20T02:15:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "Attempted phone contact at 4155552891. Reached debtor. Explained delinquency status. Debtor mentioned recent job change and income reduction. Requested callback at 5 PM today to discuss payment options.",
+        "descriptionType": "Communication",
+        "id": "note-dc-004",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-10-24T09:00:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "TODO: Schedule review meeting with David Chen today (2025-10-24) to discuss November payment plan and confirm hardship program eligibility. Send calendar invite by 4 PM.",
+        "descriptionType": "Action Required",
+        "id": "note-dc-010",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-10-24T08:30:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "TODO: Send SMS reminder today (2025-10-24) with November 15th payment due date and multiple payment options available.",
+        "descriptionType": "Action Required",
+        "id": "note-dc-007",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-30T09:00:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "Sent email to debtor summarizing payment agreement and schedule. Included account statement and next payment due date: 2025-11-15.",
+        "descriptionType": "Communication",
+        "id": "note-dc-009",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-29T14:45:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Partial payment of $200 received on 2025-08-29. Applied towards principal. Outstanding balance: $13,800.",
+        "descriptionType": "Payment",
+        "id": "note-dc-008",
+        "isPinned": false,
+        "subType": "Partial Payment",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-20T21:15:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "Follow-up call completed at 5:15 PM. Debtor agreed to make partial payment of $200 by end of month and resume full payments in November.",
+        "descriptionType": "Communication",
+        "id": "note-dc-006",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c205471a-a346-4ec8-b55a-526e2d6a2c68",
+        "accountNumber": "DC-4002",
+        "createdAt": "2025-08-20T02:15:00",
+        "createdBy": {
+          "email": "jessica.martinez@agency.com",
+          "firstName": "Jessica",
+          "id": "u-4001",
+          "lastName": "Martinez"
+        },
+        "description": "TODO: Call back David Chen at 5:00 PM PST today (2025-08-20) to discuss payment arrangement options. Mention hardship program eligibility.",
+        "descriptionType": "Action Required",
+        "id": "note-dc-005",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 425.0,
+        "daysPastDue": 9,
+        "dueDate": "2025-10-15",
+        "id": "PMT-2025-403",
+        "interestComponent": 126.25,
+        "principalComponent": 298.75,
+        "status": "Overdue"
+      },
+      {
+        "amount": 425.0,
+        "daysPastDue": 0,
+        "dueDate": "2025-11-15",
+        "id": "PMT-2025-404",
+        "interestComponent": 119.75,
+        "principalComponent": 305.25,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 425.0,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-15",
+        "id": "PMT-2026-401",
+        "interestComponent": 113.0,
+        "principalComponent": 312.0,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 425.0,
+        "dueDate": "2025-08-15",
+        "failureReason": "Card Declined",
+        "id": "PMT-2025-401",
+        "interestPaid": 0.0,
+        "lateFee": 50.0,
+        "method": "Credit Card",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 425.0,
+        "dueDate": "2025-09-15",
+        "failureReason": "Card Declined",
+        "id": "PMT-2025-402",
+        "interestPaid": 0.0,
+        "lateFee": 50.0,
+        "method": "Credit Card",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Emily Chen",
+      "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+      "accountNumber": "EC-3001",
+      "accountType": "Student Loan",
+      "daysPastDue": 90,
+      "defaultReason": "No payment for 3 months",
+      "loanDetails": {
+        "disbursementDate": "2025-09-01",
+        "interestAmount": 13000.0,
+        "interestPaid": 0.0,
+        "interestPending": 13000.0,
+        "interestRate": 5.5,
+        "lateFeesAccrued": 195.0,
+        "loanTerm": 120,
+        "maturityDate": "2035-09-05",
+        "principalAmount": 65000.0,
+        "principalPaid": 0.0,
+        "principalPending": 65000.0,
+        "totalLoanAmount": 78000.0,
+        "totalPaid": 0.0,
+        "totalPending": 78000.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2025-10-05",
+        "frequency": "Monthly",
+        "id": "pp-ec-emi",
+        "installmentsPaid": 0,
+        "installmentsRemaining": 120,
+        "lastPaymentDate": "2035-09-05",
+        "monthlyInstallment": 650.0,
+        "nextPaymentDate": "2026-01-05",
+        "paymentDay": 5,
+        "paymentMethod": "ACH Autopay",
+        "status": "Defaulted",
+        "totalInstallments": 120,
+        "type": "EMI"
+      },
+      "status": "Defaulted"
+    },
+    "basicInfo": {
+      "address": "456 Tech Boulevard",
+      "address2": "Unit 15B",
+      "cPhone": 6175557890,
+      "city": "Boston",
+      "country": "USA",
+      "description": "Student loan repayment",
+      "dob": "1993-11-30T00:00:00",
+      "email": "emily.chen@email.com",
+      "fullAddress": "456 Tech Boulevard Unit 15B Boston MA 02115",
+      "fullName": "Emily Chen",
+      "hPhone": 6175553456,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "MA",
+      "timezone": "EST",
+      "zipCode": 2115
+    },
+    "notes": [
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-09-01T11:00:00",
+        "createdBy": {
+          "email": "michael.brown@agency.com",
+          "firstName": "Michael",
+          "id": "u-3001",
+          "lastName": "Brown"
+        },
+        "description": "Initial loan consultation. Discussed student loan consolidation options.",
+        "descriptionType": "Consultation",
+        "id": "note-ec-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-10-05T09:15:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "ACH payment of $650 failed due to insufficient funds.",
+        "descriptionType": "Payment",
+        "id": "note-ec-002",
+        "isPinned": false,
+        "subType": "ACH",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-10-05T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Balance updated from $78000.00 to $78195.00. Late fees updated from $0.00 to $65.00. Delinquency status updated from 'Current' to 'PastDue30'.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ec-003",
+        "isPinned": false,
+        "subType": "Account Admin",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-11-05T09:15:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "ACH payment of $650 failed due to insufficient funds. Late fee of $65 applied.",
+        "descriptionType": "Payment",
+        "id": "note-ec-004",
+        "isPinned": false,
+        "subType": "ACH",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-11-05T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Balance updated from $78195.00 to $78260.00. Late fees updated from $65.00 to $130.00. Delinquency status updated from 'PastDue30' to 'PastDue60'.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ec-005",
+        "isPinned": false,
+        "subType": "Account Admin",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-05T09:15:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "ACH payment of $650 failed due to insufficient funds. Late fee of $65 applied.",
+        "descriptionType": "Payment",
+        "id": "note-ec-006",
+        "isPinned": false,
+        "subType": "ACH",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-05T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Balance updated from $78260.00 to $78325.00. Late fees updated from $130.00 to $195.00. Delinquency status updated from 'PastDue60' to 'PastDue90'.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ec-007",
+        "isPinned": false,
+        "subType": "Account Admin",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-05T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Account marked as DEFAULTED due to 3 consecutive failed payments. Total outstanding: $78,195 (including late fees).",
+        "descriptionType": "Status Change",
+        "id": "note-ec-008",
+        "isPinned": true,
+        "subType": "Default",
+        "type": "Alert"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-06T09:00:00",
+        "createdBy": {
+          "email": "michael.brown@agency.com",
+          "firstName": "Michael",
+          "id": "u-3001",
+          "lastName": "Brown"
+        },
+        "description": "Agent Collector updated from 'Unassigned' to 'Michael Brown' by workflow auto account assignment.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ec-009",
+        "isPinned": false,
+        "subType": "Statuses and Attributes",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-10T14:30:00",
+        "createdBy": {
+          "email": "michael.brown@agency.com",
+          "firstName": "Michael",
+          "id": "u-3001",
+          "lastName": "Brown"
+        },
+        "description": "Attempted phone contact at 6175557890. No answer. Left voicemail regarding overdue payments.",
+        "descriptionType": "Communication",
+        "id": "note-ec-010",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-10T14:35:00",
+        "createdBy": {
+          "email": "michael.brown@agency.com",
+          "firstName": "Michael",
+          "id": "u-3001",
+          "lastName": "Brown"
+        },
+        "description": "Sent email notification regarding account default status and payment options.",
+        "descriptionType": "Communication",
+        "id": "note-ec-011",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-15T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Delinquency status updated from 'PastDue90' to 'Defaulted'.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ec-012",
+        "isPinned": true,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471a-a346-4ec8-b55a-526e2d6a2c67",
+        "accountNumber": "EC-3001",
+        "createdAt": "2025-12-18T11:15:00",
+        "createdBy": {
+          "email": "michael.brown@agency.com",
+          "firstName": "Michael",
+          "id": "u-3001",
+          "lastName": "Brown"
+        },
+        "description": "Received inbound call from debtor. Discussed payment difficulties due to temporary job loss. Agreed to review hardship options. Follow-up scheduled for 12/20/2025.",
+        "descriptionType": "Communication",
+        "id": "note-ec-013",
+        "isPinned": true,
+        "subType": "Inbound",
+        "type": "Call"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 650.0,
+        "daysPastDue": 19,
+        "dueDate": "2026-01-05",
+        "id": "PMT-2026-301",
+        "interestComponent": 295.83,
+        "principalComponent": 354.17,
+        "status": "Overdue"
+      },
+      {
+        "amount": 650.0,
+        "daysPastDue": 0,
+        "dueDate": "2026-02-05",
+        "id": "PMT-2026-302",
+        "interestComponent": 294.21,
+        "principalComponent": 355.79,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 650.0,
+        "daysPastDue": 0,
+        "dueDate": "2026-03-05",
+        "id": "PMT-2026-303",
+        "interestComponent": 292.58,
+        "principalComponent": 357.42,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 650.0,
+        "dueDate": "2025-10-05",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-301",
+        "interestPaid": 0.0,
+        "lateFee": 65.0,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 650.0,
+        "dueDate": "2025-11-05",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-302",
+        "interestPaid": 0.0,
+        "lateFee": 65.0,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 650.0,
+        "dueDate": "2025-12-05",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-303",
+        "interestPaid": 0.0,
+        "lateFee": 65.0,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Lisa Anderson",
+      "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+      "accountNumber": "LA-7005",
+      "accountType": "Utility Services",
+      "daysPastDue": 90,
+      "defaultReason": "Inability to pay during unemployment",
+      "loanDetails": {
+        "disbursementDate": "2024-12-01",
+        "interestAmount": 0.0,
+        "interestPaid": 0.0,
+        "interestPending": 0.0,
+        "interestRate": 0.0,
+        "lateFeesAccrued": 325.0,
+        "loanTerm": 12,
+        "maturityDate": "2025-12-01",
+        "principalAmount": 3250.0,
+        "principalPaid": 150.0,
+        "principalPending": 3100.0,
+        "totalLoanAmount": 3250.0,
+        "totalPaid": 150.0,
+        "totalPending": 3100.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2025-01-15",
+        "frequency": "Monthly",
+        "id": "pp-la-emi",
+        "installmentsPaid": 1,
+        "installmentsRemaining": 11,
+        "lastPaymentDate": "2025-12-15",
+        "monthlyInstallment": 270.83,
+        "nextPaymentDate": "2025-11-15",
+        "paymentDay": 15,
+        "paymentMethod": "ACH",
+        "status": "Delinquent",
+        "totalInstallments": 12,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "888 Residential Lane",
+      "address2": "Building C",
+      "cPhone": 3035557821,
+      "city": "Denver",
+      "country": "USA",
+      "description": "Utility services debt",
+      "dob": "1992-06-18T00:00:00",
+      "email": "lisa.anderson@email.com",
+      "fullAddress": "888 Residential Lane Building C Denver CO 80202",
+      "fullName": "Lisa Anderson",
+      "hPhone": 3035554563,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "CO",
+      "timezone": "MST",
+      "zipCode": 80202
+    },
+    "notes": [
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2024-12-01T10:00:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "New utility services account established. 12-month billing cycle for electric and gas services in Denver area.",
+        "descriptionType": "Consultation",
+        "id": "note-la-001",
+        "isPinned": false,
+        "subType": "Account Setup",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-01-15T14:30:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Initial payment of $150 received on 2025-01-15.",
+        "descriptionType": "Payment",
+        "id": "note-la-002",
+        "isPinned": false,
+        "subType": "ACH",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-07-20T11:00:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "Contact attempted at 3035557821. Reached debtor. Customer explained job loss in May and is actively searching for employment. Expressed willingness to pay but lacks current funds.",
+        "descriptionType": "Communication",
+        "id": "note-la-003",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-10-24T10:30:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "TODO: Call Lisa Anderson today (2025-10-24) at 2 PM MST for monthly check-in. Verify employment status and discuss resumption of full payment plan starting 2025-11-15.",
+        "descriptionType": "Action Required",
+        "id": "note-la-010",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-10-24T09:45:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "TODO: Send SMS reminder today (2025-10-24) about upcoming November payment resumption. Provide updated payment schedule and contact info.",
+        "descriptionType": "Action Required",
+        "id": "note-la-009",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-08-12T09:00:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "TODO: Call Lisa Anderson on 2025-08-20 at 2 PM MST to discuss hardship approval and finalize reduced payment plan starting 2025-09-01.",
+        "descriptionType": "Action Required",
+        "id": "note-la-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-08-10T10:15:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "SMS sent on 2025-08-10 informing about received hardship application and next steps in approval process.",
+        "descriptionType": "Communication",
+        "id": "note-la-007",
+        "isPinned": false,
+        "subType": "Update",
+        "type": "SMS"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-07-25T08:00:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "TODO: Check on hardship assistance application status by 2025-08-05. If approved, coordinate with client on payment schedule.",
+        "descriptionType": "Action Required",
+        "id": "note-la-006",
+        "isPinned": false,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-07-21T09:30:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "Sent hardship program information and utility assistance resources. Included application deadline of 2025-08-01 for emergency financial assistance.",
+        "descriptionType": "Communication",
+        "id": "note-la-005",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c505471a-a346-4ec8-b55a-526e2d6a2c71",
+        "accountNumber": "LA-7005",
+        "createdAt": "2025-07-20T11:05:00",
+        "createdBy": {
+          "email": "thomas.wright@agency.com",
+          "firstName": "Thomas",
+          "id": "u-7001",
+          "lastName": "Wright"
+        },
+        "description": "TODO: Provide information about hardship assistance program and utility payment deferral options. Send program details via email.",
+        "descriptionType": "Action Required",
+        "id": "note-la-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 270.83,
+        "daysPastDue": 9,
+        "dueDate": "2025-10-15",
+        "id": "PMT-2025-704",
+        "interestComponent": 12.54,
+        "principalComponent": 258.29,
+        "status": "Overdue"
+      },
+      {
+        "amount": 270.83,
+        "daysPastDue": 0,
+        "dueDate": "2025-11-15",
+        "id": "PMT-2025-705",
+        "interestComponent": 11.5,
+        "principalComponent": 259.33,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 270.83,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-15",
+        "id": "PMT-2025-706",
+        "interestComponent": 10.46,
+        "principalComponent": 260.37,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 270.83,
+        "dueDate": "2025-07-15",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-701",
+        "interestPaid": 0.0,
+        "lateFee": 27.08,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 270.83,
+        "dueDate": "2025-08-15",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-702",
+        "interestPaid": 0.0,
+        "lateFee": 27.08,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 270.83,
+        "dueDate": "2025-09-15",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-703",
+        "interestPaid": 0.0,
+        "lateFee": 27.08,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Marcus Thompson",
+      "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+      "accountNumber": "MT-6004",
+      "accountType": "Personal Loan",
+      "daysPastDue": 125,
+      "defaultReason": "No payment for 120+ days",
+      "loanDetails": {
+        "disbursementDate": "2023-01-10",
+        "interestAmount": 5250.0,
+        "interestPaid": 0.0,
+        "interestPending": 5250.0,
+        "interestRate": 7.5,
+        "lateFeesAccrued": 875.0,
+        "loanTerm": 60,
+        "maturityDate": "2028-01-10",
+        "principalAmount": 25000.0,
+        "principalPaid": 2500.0,
+        "principalPending": 22500.0,
+        "totalLoanAmount": 30250.0,
+        "totalPaid": 2500.0,
+        "totalPending": 27750.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2023-02-10",
+        "frequency": "Monthly",
+        "id": "pp-mt-emi",
+        "installmentsPaid": 10,
+        "installmentsRemaining": 50,
+        "lastPaymentDate": "2028-01-10",
+        "monthlyInstallment": 504.17,
+        "nextPaymentDate": "2026-01-10",
+        "paymentDay": 10,
+        "paymentMethod": "ACH",
+        "status": "Defaulted",
+        "totalInstallments": 60,
+        "type": "EMI"
+      },
+      "status": "Defaulted"
+    },
+    "basicInfo": {
+      "address": "555 Enterprise Court",
+      "address2": "Floor 12",
+      "cPhone": 4045556789,
+      "city": "Atlanta",
+      "country": "USA",
+      "description": "Personal loan default",
+      "dob": "1988-11-05T00:00:00",
+      "email": "marcus.thompson@email.com",
+      "fullAddress": "555 Enterprise Court Floor 12 Atlanta GA 30303",
+      "fullName": "Marcus Thompson",
+      "hPhone": 4045552134,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "GA",
+      "timezone": "EST",
+      "zipCode": 30303
+    },
+    "notes": [
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2023-01-10T09:30:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "Personal loan initiated. $25,000 borrowed for business expansion. 60-month repayment plan at 7.5% interest.",
+        "descriptionType": "Consultation",
+        "id": "note-mt-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-07-15T10:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Account status escalated to 'Defaulted' - 120+ days past due. Assigned to Rachel Mitchell for collections.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-mt-002",
+        "isPinned": true,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-07-20T14:20:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "Attempted outbound call at 4045556789. No answer. Left voicemail requesting immediate contact regarding account default.",
+        "descriptionType": "Communication",
+        "id": "note-mt-003",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-10-24T10:00:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "TODO: Call Marcus Thompson today (2025-10-24) at 2 PM EST to confirm settlement arrangement is on track. Document commitment and schedule next review for 2025-11-10.",
+        "descriptionType": "Action Required",
+        "id": "note-mt-010",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-10-24T09:30:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "TODO: Prepare updated settlement agreement documentation for Marcus Thompson today (2025-10-24). Include payment schedule and terms. Send by EOD.",
+        "descriptionType": "Action Required",
+        "id": "note-mt-009",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-08-08T16:50:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "TODO: Prepare settlement offer options - 70% payoff lump sum or 12-month payment plan. Obtain management approval by 2025-08-15.",
+        "descriptionType": "Action Required",
+        "id": "note-mt-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-08-08T16:45:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "Received inbound call from debtor on 2025-08-08. Debtor explained business failed due to market downturn. Interested in settlement offer.",
+        "descriptionType": "Communication",
+        "id": "note-mt-007",
+        "isPinned": true,
+        "subType": "Inbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-07-25T08:00:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "TODO: Follow up on demand letter response status by 2025-08-10. If no contact, prepare legal referral documentation.",
+        "descriptionType": "Action Required",
+        "id": "note-mt-006",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-07-22T09:00:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "Sent formal notice of default email. Debtor has 15 days to respond or legal action will be initiated.",
+        "descriptionType": "Communication",
+        "id": "note-mt-005",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c405471a-a346-4ec8-b55a-526e2d6a2c70",
+        "accountNumber": "MT-6004",
+        "createdAt": "2025-07-20T14:25:00",
+        "createdBy": {
+          "email": "rachel.mitchell@agency.com",
+          "firstName": "Rachel",
+          "id": "u-6001",
+          "lastName": "Mitchell"
+        },
+        "description": "TODO: Send formal demand letter via certified mail on 2025-07-22. Include 15-day payment deadline.",
+        "descriptionType": "Action Required",
+        "id": "note-mt-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 504.17,
+        "daysPastDue": 45,
+        "dueDate": "2025-09-10",
+        "id": "PMT-2025-605",
+        "interestComponent": 126.04,
+        "principalComponent": 378.13,
+        "status": "Overdue"
+      },
+      {
+        "amount": 504.17,
+        "daysPastDue": 14,
+        "dueDate": "2025-10-10",
+        "id": "PMT-2025-606",
+        "interestComponent": 125.26,
+        "principalComponent": 378.91,
+        "status": "Overdue"
+      },
+      {
+        "amount": 504.17,
+        "daysPastDue": 0,
+        "dueDate": "2025-11-10",
+        "id": "PMT-2025-607",
+        "interestComponent": 124.47,
+        "principalComponent": 379.7,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 504.17,
+        "dueDate": "2025-05-10",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-601",
+        "interestPaid": 0.0,
+        "lateFee": 50.42,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 504.17,
+        "dueDate": "2025-06-10",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-602",
+        "interestPaid": 0.0,
+        "lateFee": 50.42,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 504.17,
+        "dueDate": "2025-07-10",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-603",
+        "interestPaid": 0.0,
+        "lateFee": 50.42,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 504.17,
+        "dueDate": "2025-08-10",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-604",
+        "interestPaid": 0.0,
+        "lateFee": 50.42,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Priya Sharma",
+      "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+      "accountNumber": "PS-8006",
+      "accountType": "Auto Loan",
+      "daysPastDue": 35,
+      "defaultReason": "Vehicle repair expenses",
+      "loanDetails": {
+        "disbursementDate": "2022-03-01",
+        "interestAmount": 3700.0,
+        "interestPaid": 0.0,
+        "interestPending": 3700.0,
+        "interestRate": 6.5,
+        "lateFeesAccrued": 175.0,
+        "loanTerm": 48,
+        "maturityDate": "2026-03-01",
+        "principalAmount": 18500.0,
+        "principalPaid": 1100.0,
+        "principalPending": 17400.0,
+        "totalLoanAmount": 22200.0,
+        "totalPaid": 1100.0,
+        "totalPending": 21100.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2022-04-01",
+        "frequency": "Monthly",
+        "id": "pp-ps-emi",
+        "installmentsPaid": 36,
+        "installmentsRemaining": 12,
+        "lastPaymentDate": "2026-03-01",
+        "monthlyInstallment": 462.5,
+        "nextPaymentDate": "2025-11-01",
+        "paymentDay": 1,
+        "paymentMethod": "ACH",
+        "status": "Delinquent",
+        "totalInstallments": 48,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "222 Heritage Street",
+      "address2": "Apt 4F",
+      "cPhone": 2125558943,
+      "city": "New York",
+      "country": "USA",
+      "description": "Auto loan default",
+      "dob": "1995-02-14T00:00:00",
+      "email": "priya.sharma@email.com",
+      "fullAddress": "222 Heritage Street Apt 4F New York NY 10001",
+      "fullName": "Priya Sharma",
+      "hPhone": 2125552876,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "NY",
+      "timezone": "EST",
+      "zipCode": 10001
+    },
+    "notes": [
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2022-03-01T13:00:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "Auto loan approved for $18,500 for 2022 Honda Civic. 48-month repayment term at 6.5% interest rate. Collateral: vehicle.",
+        "descriptionType": "Consultation",
+        "id": "note-ps-001",
+        "isPinned": false,
+        "subType": "Loan Approval",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-08-15T09:00:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Good standing: 36 of 48 payments made on time. Account reassigned to David Kumar for collections follow-up.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-ps-002",
+        "isPinned": false,
+        "subType": "Account Status",
+        "type": "Other"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-08-18T15:30:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "Called at 2125558943. Reached debtor. Priya explained unexpected auto repair costs ($3,200) required for transmission. Committed to catching up on payments starting October 15th.",
+        "descriptionType": "Communication",
+        "id": "note-ps-003",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-08-18T15:35:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "TODO: Accept verbal agreement for modified payment schedule - full double payment ($925) on 2025-10-15 and 2025-11-15, then resume regular payments.",
+        "descriptionType": "Action Required",
+        "id": "note-ps-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-08-19T10:00:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "Sent written confirmation of modified payment plan. Double payments required by October 15 and November 15. First regular payment resumed December 1st.",
+        "descriptionType": "Communication",
+        "id": "note-ps-005",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-10-10T14:00:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "SMS reminder sent on 2025-10-10 about double payment due on October 15th. Included payment link and options.",
+        "descriptionType": "Communication",
+        "id": "note-ps-006",
+        "isPinned": false,
+        "subType": "Reminder",
+        "type": "SMS"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-10-24T08:15:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "TODO: Call Priya Sharma today (2025-10-24) at 10 AM EST to confirm final double payment arrangements for November 15th. Send calendar reminder.",
+        "descriptionType": "Action Required",
+        "id": "note-ps-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c605471a-a346-4ec8-b55a-526e2d6a2c72",
+        "accountNumber": "PS-8006",
+        "createdAt": "2025-10-15T08:00:00",
+        "createdBy": {
+          "email": "david.kumar@agency.com",
+          "firstName": "David",
+          "id": "u-8001",
+          "lastName": "Kumar"
+        },
+        "description": "TODO: Verify double payment of $925 received by 2025-10-20. If received, send confirmation. If not, call Priya immediately to discuss alternative arrangements.",
+        "descriptionType": "Action Required",
+        "id": "note-ps-007",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 462.5,
+        "daysPastDue": 23,
+        "dueDate": "2025-10-01",
+        "id": "PMT-2025-803",
+        "interestComponent": 108.22,
+        "principalComponent": 354.28,
+        "status": "Overdue"
+      },
+      {
+        "amount": 462.5,
+        "daysPastDue": 0,
+        "dueDate": "2025-11-01",
+        "id": "PMT-2025-804",
+        "interestComponent": 105.05,
+        "principalComponent": 357.45,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 462.5,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-01",
+        "id": "PMT-2025-805",
+        "interestComponent": 101.85,
+        "principalComponent": 360.65,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 462.5,
+        "dueDate": "2025-08-01",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-801",
+        "interestPaid": 0.0,
+        "lateFee": 46.25,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 462.5,
+        "dueDate": "2025-09-01",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-802",
+        "interestPaid": 0.0,
+        "lateFee": 46.25,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Sophia Rodriguez",
+      "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+      "accountNumber": "SR-5003",
+      "accountType": "Medical Debt",
+      "daysPastDue": 60,
+      "defaultReason": "Unexpected medical expenses",
+      "loanDetails": {
+        "disbursementDate": "2024-10-15",
+        "interestAmount": 525.0,
+        "interestPaid": 0.0,
+        "interestPending": 525.0,
+        "interestRate": 6.0,
+        "lateFeesAccrued": 280.0,
+        "loanTerm": 24,
+        "maturityDate": "2026-10-15",
+        "principalAmount": 8750.0,
+        "principalPaid": 350.0,
+        "principalPending": 8400.0,
+        "totalLoanAmount": 9275.0,
+        "totalPaid": 350.0,
+        "totalPending": 8925.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2024-11-20",
+        "frequency": "Monthly",
+        "id": "pp-sr-emi",
+        "installmentsPaid": 3,
+        "installmentsRemaining": 21,
+        "lastPaymentDate": "2026-10-20",
+        "monthlyInstallment": 386.5,
+        "nextPaymentDate": "2025-11-20",
+        "paymentDay": 20,
+        "paymentMethod": "Bank Transfer",
+        "status": "Delinquent",
+        "totalInstallments": 24,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "321 Commerce Avenue",
+      "address2": "Apt 8E",
+      "cPhone": 3055554521,
+      "city": "Miami",
+      "country": "USA",
+      "description": "Medical debt collection",
+      "dob": "1990-03-22T00:00:00",
+      "email": "sophia.rodriguez@email.com",
+      "fullAddress": "321 Commerce Avenue Apt 8E Miami FL 33128",
+      "fullName": "Sophia Rodriguez",
+      "hPhone": 3055552847,
+      "langCode": "ESP",
+      "language": "Spanish",
+      "partyType": "FirstParty",
+      "state": "FL",
+      "timezone": "EST",
+      "zipCode": 33128
+    },
+    "notes": [
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2024-10-15T14:00:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "Medical debt account established. Emergency surgery expenses totaling $8,750. Patient enrolled in 24-month payment plan.",
+        "descriptionType": "Consultation",
+        "id": "note-sr-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-08-25T08:30:00",
+        "createdBy": {
+          "email": "system@loanportal.com",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Agent Collector assigned to 'Carlos Hernandez' by workflow auto account assignment.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-sr-002",
+        "isPinned": false,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-08-26T11:45:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "Reached debtor at 3055554521. Debtor explained hardship due to medical recovery period limiting work hours. Sympathetic to situation. Debtor requested 2-week extension to gather funds.",
+        "descriptionType": "Communication",
+        "id": "note-sr-003",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-10-24T09:15:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "TODO: Call Sophia Rodriguez today (2025-10-24) at 11 AM EST for 30-day follow-up. Verify account remains current and address any ongoing financial concerns regarding medical recovery.",
+        "descriptionType": "Action Required",
+        "id": "note-sr-009",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-10-24T08:45:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "TODO: Send payment acknowledgment email today (2025-10-24) with updated account statement and next payment schedule starting 2025-11-20.",
+        "descriptionType": "Action Required",
+        "id": "note-sr-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-09-05T10:30:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "SMS reminder sent on 2025-09-05 regarding payment due on 2025-09-09. Debtor responded confirming payment will be made.",
+        "descriptionType": "Communication",
+        "id": "note-sr-007",
+        "isPinned": false,
+        "subType": "Reminder",
+        "type": "SMS"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-08-27T10:15:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "Sent Spanish-language payment extension confirmation email with payment options and deadline: 2025-09-09.",
+        "descriptionType": "Communication",
+        "id": "note-sr-006",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-08-27T09:00:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "TODO: Send SMS reminder on 2025-09-05 about upcoming payment deadline. Include payment portal link and available payment methods.",
+        "descriptionType": "Action Required",
+        "id": "note-sr-005",
+        "isPinned": false,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471a-a346-4ec8-b55a-526e2d6a2c69",
+        "accountNumber": "SR-5003",
+        "createdAt": "2025-08-26T11:50:00",
+        "createdBy": {
+          "email": "carlos.hernandez@agency.com",
+          "firstName": "Carlos",
+          "id": "u-5001",
+          "lastName": "Hernandez"
+        },
+        "description": "TODO: Grant 2-week extension. Contact Sophia Rodriguez on 2025-09-09 to confirm payment. If no response, escalate to secondary collection.",
+        "descriptionType": "Action Required",
+        "id": "note-sr-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 386.5,
+        "daysPastDue": 4,
+        "dueDate": "2025-10-20",
+        "id": "PMT-2025-503",
+        "interestComponent": 32.29,
+        "principalComponent": 354.21,
+        "status": "Overdue"
+      },
+      {
+        "amount": 386.5,
+        "daysPastDue": 0,
+        "dueDate": "2025-11-20",
+        "id": "PMT-2025-504",
+        "interestComponent": 29.61,
+        "principalComponent": 356.89,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 386.5,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-20",
+        "id": "PMT-2025-505",
+        "interestComponent": 26.89,
+        "principalComponent": 359.61,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 386.5,
+        "dueDate": "2025-08-20",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-501",
+        "interestPaid": 0.0,
+        "lateFee": 38.65,
+        "method": "Bank Transfer",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 386.5,
+        "dueDate": "2025-09-20",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-502",
+        "interestPaid": 0.0,
+        "lateFee": 38.65,
+        "method": "Bank Transfer",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  }
+]
