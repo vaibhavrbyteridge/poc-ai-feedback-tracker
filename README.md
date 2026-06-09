@@ -4,7 +4,7 @@ Training simulator: human collector (push-to-talk) ↔ AI customer (personality 
 
 ## Stack
 
-- **Backend:** FastAPI, utterance-batch STT/TTS, WebSocket turns
+- **Backend:** FastAPI, utterance-batch STT/TTS, WebSocket turns 
 - **Frontend:** Vite + React + TypeScript
 - **STT:** AssemblyAI async (live when `ASSEMBLYAI_API_KEY` set)
 - **LLM:** Groq chat completions (live when `GROQ_API_KEY` set)
