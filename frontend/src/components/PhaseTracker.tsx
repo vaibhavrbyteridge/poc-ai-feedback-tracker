@@ -11,41 +11,8 @@ const phases = [
   { id: "close", label: "Close", icon: "✅" },
 ];
 
-const topPerformerScripts: Record<string, { title: string; examples: string[] }> = {
-  intro: {
-    title: "Opening & Compliance",
-    examples: [
-      "Hi, this is [Name] calling from [Company]. This call is an attempt to collect a debt and any information obtained will be used for that purpose. Am I speaking with [Customer Name]?",
-      "Good [morning/afternoon]. My name is [Name] with [Company]. I'm calling regarding your account. For verification purposes, can you confirm your date of birth?",
-    ],
-  },
-  probe: {
-    title: "Situation Assessment",
-    examples: [
-      "I see your account is past due. I'd like to understand your situation — has anything changed recently that's made it difficult to keep up with payments?",
-      "I appreciate you being upfront with me. Can you walk me through what's been going on financially? That way I can find the best option for you.",
-    ],
-  },
-  negotiate: {
-    title: "Payment Arrangement",
-    examples: [
-      "Based on what you've shared, I can offer a modified plan at $[amount] per month. If you set up autopay today, I can also request a waiver on the late fees. Does that work for you?",
-      "I understand $[full amount] is tough right now. What if we split it into [X] payments of $[amount]? I want to find something that keeps your account in good standing.",
-    ],
-  },
-  close: {
-    title: "Confirmation & Wrap-up",
-    examples: [
-      "Great, so to confirm — you'll be paying $[amount] on [date] via [method]. I'll send you a written confirmation by email. Is there anything else I can help with today?",
-      "Thank you for working with me on this, [Name]. Your first payment of $[amount] is due [date]. I'll follow up on [date] to make sure everything is on track. Have a good day.",
-    ],
-  },
-};
-
 export default function PhaseTracker({ phaseInfo }: Props) {
   if (!phaseInfo) return null;
-
-  const currentScripts = topPerformerScripts[phaseInfo.current_phase];
 
   return (
     <div className="phase-tracker">
@@ -97,21 +64,6 @@ export default function PhaseTracker({ phaseInfo }: Props) {
           {phaseInfo.identity_verified ? "✅" : "⬜"} Identity verified
         </span>
       </div>
-
-      {/* Top performer scripts */}
-      {currentScripts && (
-        <div className="top-performer">
-          <div className="top-performer-header">
-            <span className="top-performer-icon">💡</span>
-            <span className="top-performer-title">Top Performer — {currentScripts.title}</span>
-          </div>
-          <div className="top-performer-examples">
-            {currentScripts.examples.map((example, i) => (
-              <p key={i} className="top-performer-example">"{example}"</p>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
