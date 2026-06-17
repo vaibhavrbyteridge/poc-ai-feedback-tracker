@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     force_mock_stt: bool = False
     force_mock_llm: bool = False
     force_mock_tts: bool = False
+    use_dummy_data: bool = False
 
     @property
     def cors_origin_list(self) -> list[str]:

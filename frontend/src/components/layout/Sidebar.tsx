@@ -1,5 +1,7 @@
 import React from "react";
 
+const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+
 export default function Sidebar() {
   return (
     <div
@@ -14,15 +16,21 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 space-y-2 flex flex-col items-center w-full">
-        <SidebarButton icon="dashboard" label="Dashboard" />
-        <SidebarButton icon="search" label="Search" />
-        <SidebarButton icon="tasks" label="Tasks" />
-        <SidebarButton icon="production" label="Production" active />
-        <SidebarButton icon="operations" label="Operations" />
-        <SidebarButton icon="queue" label="Queue" />
-        <SidebarButton icon="reports" label="Reports" />
-        <SidebarButton icon="help" label="Help Center" />
-        <SidebarButton icon="settings" label="Settings" />
+        {useDummyData ? (
+          <SidebarButton icon="production" label="Production" active />
+        ) : (
+          <>
+            <SidebarButton icon="dashboard" label="Dashboard" />
+            <SidebarButton icon="search" label="Search" />
+            <SidebarButton icon="tasks" label="Tasks" />
+            <SidebarButton icon="production" label="Production" active />
+            <SidebarButton icon="operations" label="Operations" />
+            <SidebarButton icon="queue" label="Queue" />
+            <SidebarButton icon="reports" label="Reports" />
+            <SidebarButton icon="help" label="Help Center" />
+            <SidebarButton icon="settings" label="Settings" />
+          </>
+        )}
       </nav>
 
       <div className="border-t border-blue-800 mt-4 pt-3 text-center w-full">

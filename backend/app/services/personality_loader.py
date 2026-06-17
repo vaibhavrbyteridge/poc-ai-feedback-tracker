@@ -19,13 +19,17 @@ class PersonalityLoader:
     def list_personalities(self) -> list[str]:
         return sorted(p.stem for p in PERSONALITIES_DIR.glob("*.yaml"))
 
-    def render(self, personality_id: str) -> tuple[str, VoiceConfig]:
+    def render(self, personality_id: str, customer_name: str = "") -> tuple[str, VoiceConfig]:
         path = PERSONALITIES_DIR / f"{personality_id}.yaml"
         if not path.exists():
             raise ValueError(f"Unknown personality: {personality_id}")
 
         with open(path, encoding="utf-8") as f:
             p = yaml.safe_load(f)
+
+        # Use the real customer name instead of the personality's character name
+        if customer_name:
+            p["character_name"] = customer_name
 
         system_prompt = self._jinja.get_template("customer_system.j2").render(p=p)
         voice = VoiceConfig(tts_voice_name=p.get("tts_voice_name", "en-US-GuyNeural"))

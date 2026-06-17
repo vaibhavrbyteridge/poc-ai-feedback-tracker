@@ -5,12 +5,14 @@ from fastapi import APIRouter, HTTPException
 from app.db import save_session, get_session_log, list_sessions as db_list_sessions, get_customer_sessions, save_classification_override
 from app.domain.models import Session, SessionCreate, SessionResponse
 from app.domain.session_store import session_store
+from app.config import get_settings
 from app.paths import data_dir
 from app.services.personality_loader import personality_loader
 
 router = APIRouter(prefix="/api", tags=["sessions"])
 
-DATA_PATH = data_dir() / "debt_data_sample.json"
+_settings = get_settings()
+DATA_PATH = data_dir() / ("debt_data_sample_dummy.json" if _settings.use_dummy_data else "debt_data_sample.json")
 
 
 def _load_customers() -> dict:

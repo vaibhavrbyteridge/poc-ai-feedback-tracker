@@ -1,10 +1,12 @@
 import json
 from datetime import datetime
 
+from app.config import get_settings
 from app.paths import data_dir
 from app.rag.protocols import Chunk
 
-DATA_PATH = data_dir() / "debt_data_sample.json"
+_settings = get_settings()
+DATA_PATH = data_dir() / ("debt_data_sample_dummy.json" if _settings.use_dummy_data else "debt_data_sample.json")
 
 
 class MockRetriever:

@@ -1,0 +1,848 @@
+[
+  {
+    "accountInfo": {
+      "accountHolder": "Rohan Verma",
+      "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+      "accountNumber": "RV-4102",
+      "accountType": "Credit Card",
+      "daysPastDue": 50,
+      "defaultReason": "Multiple missed payments",
+      "loanDetails": {
+        "disbursementDate": "2023-06-10",
+        "interestAmount": 3100.0,
+        "interestPaid": 0.0,
+        "interestPending": 3100.0,
+        "interestRate": 19.0,
+        "lateFeesAccrued": 500.0,
+        "loanTerm": 36,
+        "maturityDate": "2026-06-10",
+        "principalAmount": 13200.0,
+        "principalPaid": 1450.0,
+        "principalPending": 11750.0,
+        "totalLoanAmount": 16300.0,
+        "totalPaid": 1450.0,
+        "totalPending": 14850.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2023-07-10",
+        "frequency": "Monthly",
+        "id": "pp-rv-emi",
+        "installmentsPaid": 6,
+        "installmentsRemaining": 30,
+        "lastPaymentDate": "2026-06-10",
+        "monthlyInstallment": 453.0,
+        "nextPaymentDate": "2025-12-10",
+        "paymentDay": 10,
+        "paymentMethod": "Credit Card",
+        "status": "Delinquent",
+        "totalInstallments": 36,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "14 MG Road",
+      "address2": "Flat 6B",
+      "cPhone": 9886541230,
+      "city": "Bengaluru",
+      "country": "India",
+      "description": "Credit card debt collection",
+      "dob": "1986-09-12T00:00:00",
+      "email": "rohan.verma@email.com",
+      "fullAddress": "14 MG Road Flat 6B Bengaluru KA 560001",
+      "fullName": "Rohan Verma",
+      "hPhone": 9845123670,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "KA",
+      "timezone": "IST",
+      "zipCode": 560001
+    },
+    "notes": [
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2023-06-10T10:00:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "Initial account setup. Credit card account opened with $13,200 credit limit.",
+        "descriptionType": "Consultation",
+        "id": "note-rv-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-15T09:00:00",
+        "createdBy": {
+          "email": "system@debtmanager.in",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Agent Collector assigned to 'Ananya Iyer' by workflow auto account assignment.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-rv-002",
+        "isPinned": false,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-10T10:30:00",
+        "createdBy": {
+          "email": "system@debtmanager.in",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Credit card payment of $453 failed - Card Declined. Late fee of $55 applied.",
+        "descriptionType": "Payment",
+        "id": "note-rv-003",
+        "isPinned": false,
+        "subType": "Credit Card",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-15T02:15:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "Attempted phone contact at 9845123670. Reached debtor. Explained delinquency status. Debtor mentioned recent relocation and temporary income gap. Requested callback at 6 PM today to discuss payment options.",
+        "descriptionType": "Communication",
+        "id": "note-rv-004",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-11-24T09:00:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "TODO: Schedule review meeting with Rohan Verma today (2025-11-24) to discuss December payment plan and confirm hardship program eligibility. Send calendar invite by 4 PM.",
+        "descriptionType": "Action Required",
+        "id": "note-rv-010",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-24T08:30:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "TODO: Send SMS reminder today (2025-09-24) with October 10th payment due date and multiple payment options available.",
+        "descriptionType": "Action Required",
+        "id": "note-rv-007",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-29T09:00:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "Sent email to debtor summarizing payment agreement and schedule. Included account statement and next payment due date: 2025-12-10.",
+        "descriptionType": "Communication",
+        "id": "note-rv-009",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-28T14:45:00",
+        "createdBy": {
+          "email": "system@debtmanager.in",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Partial payment of $250 received on 2025-09-28. Applied towards principal. Outstanding balance: $14,600.",
+        "descriptionType": "Payment",
+        "id": "note-rv-008",
+        "isPinned": false,
+        "subType": "Partial Payment",
+        "type": "Payment"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-15T21:30:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "Follow-up call completed at 6:30 PM. Debtor agreed to make partial payment of $250 by end of month and resume full payments in October.",
+        "descriptionType": "Communication",
+        "id": "note-rv-006",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
+        "accountNumber": "RV-4102",
+        "createdAt": "2025-09-15T02:20:00",
+        "createdBy": {
+          "email": "ananya.iyer@agency.com",
+          "firstName": "Ananya",
+          "id": "u-9001",
+          "lastName": "Iyer"
+        },
+        "description": "TODO: Call back Rohan Verma at 6:00 PM IST today (2025-09-15) to discuss payment arrangement options. Mention hardship program eligibility.",
+        "descriptionType": "Action Required",
+        "id": "note-rv-005",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 453.0,
+        "daysPastDue": 10,
+        "dueDate": "2025-11-10",
+        "id": "PMT-2025-901",
+        "interestComponent": 132.0,
+        "principalComponent": 321.0,
+        "status": "Overdue"
+      },
+      {
+        "amount": 453.0,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-10",
+        "id": "PMT-2025-902",
+        "interestComponent": 125.5,
+        "principalComponent": 327.5,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 453.0,
+        "daysPastDue": 0,
+        "dueDate": "2026-01-10",
+        "id": "PMT-2026-901",
+        "interestComponent": 118.75,
+        "principalComponent": 334.25,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 453.0,
+        "dueDate": "2025-09-10",
+        "failureReason": "Card Declined",
+        "id": "PMT-2025-911",
+        "interestPaid": 0.0,
+        "lateFee": 55.0,
+        "method": "Credit Card",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 453.0,
+        "dueDate": "2025-10-10",
+        "failureReason": "Card Declined",
+        "id": "PMT-2025-912",
+        "interestPaid": 0.0,
+        "lateFee": 55.0,
+        "method": "Credit Card",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Priyanka Reddy",
+      "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+      "accountNumber": "PR-6104",
+      "accountType": "Personal Loan",
+      "daysPastDue": 130,
+      "defaultReason": "No payment for 120+ days",
+      "loanDetails": {
+        "disbursementDate": "2023-02-15",
+        "interestAmount": 5600.0,
+        "interestPaid": 0.0,
+        "interestPending": 5600.0,
+        "interestRate": 8.0,
+        "lateFeesAccrued": 920.0,
+        "loanTerm": 60,
+        "maturityDate": "2028-02-15",
+        "principalAmount": 27000.0,
+        "principalPaid": 2700.0,
+        "principalPending": 24300.0,
+        "totalLoanAmount": 32600.0,
+        "totalPaid": 2700.0,
+        "totalPending": 29900.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2023-03-15",
+        "frequency": "Monthly",
+        "id": "pp-pr-emi",
+        "installmentsPaid": 11,
+        "installmentsRemaining": 49,
+        "lastPaymentDate": "2028-02-15",
+        "monthlyInstallment": 543.33,
+        "nextPaymentDate": "2026-02-15",
+        "paymentDay": 15,
+        "paymentMethod": "ACH",
+        "status": "Defaulted",
+        "totalInstallments": 60,
+        "type": "EMI"
+      },
+      "status": "Defaulted"
+    },
+    "basicInfo": {
+      "address": "27 Banjara Hills Road",
+      "address2": "Tower B, Floor 9",
+      "cPhone": 9912345678,
+      "city": "Hyderabad",
+      "country": "India",
+      "description": "Personal loan default",
+      "dob": "1989-12-20T00:00:00",
+      "email": "priyanka.reddy@email.com",
+      "fullAddress": "27 Banjara Hills Road Tower B, Floor 9 Hyderabad TG 500034",
+      "fullName": "Priyanka Reddy",
+      "hPhone": 9923456781,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "TG",
+      "timezone": "IST",
+      "zipCode": 500034
+    },
+    "notes": [
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2023-02-15T09:30:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "Personal loan initiated. $27,000 borrowed for home renovation. 60-month repayment plan at 8.0% interest.",
+        "descriptionType": "Consultation",
+        "id": "note-pr-001",
+        "isPinned": false,
+        "subType": "Meeting",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-10-20T10:00:00",
+        "createdBy": {
+          "email": "system@debtmanager.in",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Account status escalated to 'Defaulted' - 120+ days past due. Assigned to Vikram Rao for collections.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-pr-002",
+        "isPinned": true,
+        "subType": "Loan & Contract Details",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-10-25T14:20:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "Attempted outbound call at 9923456781. No answer. Left voicemail requesting immediate contact regarding account default.",
+        "descriptionType": "Communication",
+        "id": "note-pr-003",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-11-28T10:00:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "TODO: Call Priyanka Reddy today (2025-11-28) at 3 PM IST to confirm settlement arrangement is on track. Document commitment and schedule next review for 2025-12-12.",
+        "descriptionType": "Action Required",
+        "id": "note-pr-010",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-11-28T09:30:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "TODO: Prepare updated settlement agreement documentation for Priyanka Reddy today (2025-11-28). Include payment schedule and terms. Send by EOD.",
+        "descriptionType": "Action Required",
+        "id": "note-pr-009",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-11-16T16:45:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "TODO: Prepare settlement offer options - 65% payoff lump sum or 14-month payment plan. Obtain management approval by 2025-11-22.",
+        "descriptionType": "Action Required",
+        "id": "note-pr-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-11-15T16:50:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "Received inbound call from debtor on 2025-11-15. Debtor explained income disruption due to family medical emergency. Interested in settlement offer.",
+        "descriptionType": "Communication",
+        "id": "note-pr-007",
+        "isPinned": true,
+        "subType": "Inbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-11-02T08:00:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "TODO: Follow up on demand letter response status by 2025-11-18. If no contact, prepare legal referral documentation.",
+        "descriptionType": "Action Required",
+        "id": "note-pr-006",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-10-30T09:00:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "Sent formal notice of default email. Debtor has 15 days to respond or legal action will be initiated.",
+        "descriptionType": "Communication",
+        "id": "note-pr-005",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
+        "accountNumber": "PR-6104",
+        "createdAt": "2025-10-28T14:25:00",
+        "createdBy": {
+          "email": "vikram.rao@agency.com",
+          "firstName": "Vikram",
+          "id": "u-9002",
+          "lastName": "Rao"
+        },
+        "description": "TODO: Send formal demand letter via registered post on 2025-10-30. Include 15-day payment deadline.",
+        "descriptionType": "Action Required",
+        "id": "note-pr-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 543.33,
+        "daysPastDue": 50,
+        "dueDate": "2025-10-15",
+        "id": "PMT-2025-921",
+        "interestComponent": 132.5,
+        "principalComponent": 410.83,
+        "status": "Overdue"
+      },
+      {
+        "amount": 543.33,
+        "daysPastDue": 19,
+        "dueDate": "2025-11-15",
+        "id": "PMT-2025-922",
+        "interestComponent": 130.9,
+        "principalComponent": 412.43,
+        "status": "Overdue"
+      },
+      {
+        "amount": 543.33,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-15",
+        "id": "PMT-2025-923",
+        "interestComponent": 129.25,
+        "principalComponent": 414.08,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 543.33,
+        "dueDate": "2025-06-15",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-931",
+        "interestPaid": 0.0,
+        "lateFee": 54.33,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 543.33,
+        "dueDate": "2025-07-15",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-932",
+        "interestPaid": 0.0,
+        "lateFee": 54.33,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 543.33,
+        "dueDate": "2025-08-15",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-933",
+        "interestPaid": 0.0,
+        "lateFee": 54.33,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 543.33,
+        "dueDate": "2025-09-15",
+        "failureReason": "Account Closed",
+        "id": "PMT-2025-934",
+        "interestPaid": 0.0,
+        "lateFee": 54.33,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  },
+  {
+    "accountInfo": {
+      "accountHolder": "Arjun Nair",
+      "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+      "accountNumber": "AN-8107",
+      "accountType": "Auto Loan",
+      "daysPastDue": 40,
+      "defaultReason": "Vehicle repair expenses",
+      "loanDetails": {
+        "disbursementDate": "2022-04-05",
+        "interestAmount": 4000.0,
+        "interestPaid": 0.0,
+        "interestPending": 4000.0,
+        "interestRate": 7.0,
+        "lateFeesAccrued": 200.0,
+        "loanTerm": 48,
+        "maturityDate": "2026-04-05",
+        "principalAmount": 19800.0,
+        "principalPaid": 1250.0,
+        "principalPending": 18550.0,
+        "totalLoanAmount": 23800.0,
+        "totalPaid": 1250.0,
+        "totalPending": 22550.0
+      },
+      "paymentPlan": {
+        "firstPaymentDate": "2022-05-05",
+        "frequency": "Monthly",
+        "id": "pp-an-emi",
+        "installmentsPaid": 38,
+        "installmentsRemaining": 10,
+        "lastPaymentDate": "2026-04-05",
+        "monthlyInstallment": 495.83,
+        "nextPaymentDate": "2025-12-05",
+        "paymentDay": 5,
+        "paymentMethod": "ACH",
+        "status": "Delinquent",
+        "totalInstallments": 48,
+        "type": "EMI"
+      },
+      "status": "Delinquent"
+    },
+    "basicInfo": {
+      "address": "9 Anna Salai",
+      "address2": "Block C, Unit 3",
+      "cPhone": 9445123890,
+      "city": "Chennai",
+      "country": "India",
+      "description": "Auto loan default",
+      "dob": "1994-05-08T00:00:00",
+      "email": "arjun.nair@email.com",
+      "fullAddress": "9 Anna Salai Block C, Unit 3 Chennai TN 600002",
+      "fullName": "Arjun Nair",
+      "hPhone": 9445678231,
+      "langCode": "ENG",
+      "language": "English",
+      "partyType": "FirstParty",
+      "state": "TN",
+      "timezone": "IST",
+      "zipCode": 600002
+    },
+    "notes": [
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2022-04-05T13:00:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "Auto loan approved for $19,800 for 2022 Maruti Suzuki Ciaz. 48-month repayment term at 7.0% interest rate. Collateral: vehicle.",
+        "descriptionType": "Consultation",
+        "id": "note-an-001",
+        "isPinned": false,
+        "subType": "Loan Approval",
+        "type": "Consultation"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2025-11-10T09:00:00",
+        "createdBy": {
+          "email": "system@debtmanager.in",
+          "firstName": "System",
+          "id": "system",
+          "lastName": "Auto"
+        },
+        "description": "Good standing: 38 of 48 payments made on time. Account reassigned to Sneha Kulkarni for collections follow-up.",
+        "descriptionType": "ActivityLogs",
+        "id": "note-an-002",
+        "isPinned": false,
+        "subType": "Account Status",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2025-11-13T15:30:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "Called at 9445678231. Reached debtor. Arjun explained unexpected auto repair costs ($2,800) required for engine work. Committed to catching up on payments starting January 5th.",
+        "descriptionType": "Communication",
+        "id": "note-an-003",
+        "isPinned": true,
+        "subType": "Outbound",
+        "type": "Call"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2025-11-13T15:35:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "TODO: Accept verbal agreement for modified payment schedule - full double payment ($992) on 2026-01-05 and 2026-02-05, then resume regular payments.",
+        "descriptionType": "Action Required",
+        "id": "note-an-004",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2025-11-14T10:00:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "Sent written confirmation of modified payment plan. Double payments required by January 5 and February 5. First regular payment resumed March 1st.",
+        "descriptionType": "Communication",
+        "id": "note-an-005",
+        "isPinned": false,
+        "subType": "Outbound",
+        "type": "Email"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2026-01-02T14:00:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "SMS reminder sent on 2026-01-02 about double payment due on January 5th. Included payment link and options.",
+        "descriptionType": "Communication",
+        "id": "note-an-006",
+        "isPinned": false,
+        "subType": "Reminder",
+        "type": "SMS"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2026-01-15T08:15:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "TODO: Call Arjun Nair today (2026-01-15) at 11 AM IST to confirm final double payment arrangements for February 5th. Send calendar reminder.",
+        "descriptionType": "Action Required",
+        "id": "note-an-008",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      },
+      {
+        "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
+        "accountNumber": "AN-8107",
+        "createdAt": "2026-01-05T08:00:00",
+        "createdBy": {
+          "email": "sneha.kulkarni@agency.com",
+          "firstName": "Sneha",
+          "id": "u-9003",
+          "lastName": "Kulkarni"
+        },
+        "description": "TODO: Verify double payment of $992 received by 2026-01-10. If received, send confirmation. If not, call Arjun immediately to discuss alternative arrangements.",
+        "descriptionType": "Action Required",
+        "id": "note-an-007",
+        "isPinned": true,
+        "subType": "Debt Collector TODO",
+        "type": "Other"
+      }
+    ],
+    "pending_payments": [
+      {
+        "amount": 495.83,
+        "daysPastDue": 28,
+        "dueDate": "2025-11-01",
+        "id": "PMT-2025-941",
+        "interestComponent": 115.0,
+        "principalComponent": 380.83,
+        "status": "Overdue"
+      },
+      {
+        "amount": 495.83,
+        "daysPastDue": 0,
+        "dueDate": "2025-12-05",
+        "id": "PMT-2025-942",
+        "interestComponent": 112.3,
+        "principalComponent": 383.53,
+        "status": "Upcoming"
+      },
+      {
+        "amount": 495.83,
+        "daysPastDue": 0,
+        "dueDate": "2026-01-05",
+        "id": "PMT-2026-941",
+        "interestComponent": 109.6,
+        "principalComponent": 386.23,
+        "status": "Upcoming"
+      }
+    ],
+    "processed_payments": [
+      {
+        "amount": 495.83,
+        "dueDate": "2025-09-05",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-951",
+        "interestPaid": 0.0,
+        "lateFee": 49.58,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      },
+      {
+        "amount": 495.83,
+        "dueDate": "2025-10-05",
+        "failureReason": "Insufficient Funds",
+        "id": "PMT-2025-952",
+        "interestPaid": 0.0,
+        "lateFee": 49.58,
+        "method": "ACH",
+        "principalPaid": 0.0,
+        "status": "Failed"
+      }
+    ]
+  }
+]

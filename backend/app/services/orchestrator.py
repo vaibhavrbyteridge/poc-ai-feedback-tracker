@@ -34,7 +34,7 @@ class Orchestrator:
         rag_context = "\n".join(c.text for c in chunks)
 
         system_prompt, voice_config = personality_loader.render(
-            session.personality_id
+            session.personality_id, customer_name=session.customer_name
         )
 
         messages = list(session.messages)

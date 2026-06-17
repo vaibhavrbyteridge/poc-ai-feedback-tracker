@@ -1,4 +1,9 @@
+const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+
 export default function Header() {
+  const title = useDummyData ? "All Accounts" : "Collections";
+  const userName = useDummyData ? "Test User" : "Sarah Smith";
+
   return (
     <div
       className="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 px-6 py-2 z-40"
@@ -20,7 +25,7 @@ export default function Header() {
               </clipPath>
             </defs>
           </svg>
-          <h1 className="text-2xl font-bold" style={{ color: "#0078d4" }}>Collections</h1>
+          <h1 className="text-2xl font-bold" style={{ color: "#0078d4" }}>{title}</h1>
         </div>
 
         {/* Right: Header Controls */}
@@ -41,7 +46,7 @@ export default function Header() {
                 <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
               </svg>
             </div>
-            <span className="text-sm font-medium">Sarah Smith</span>
+            <span className="text-sm font-medium">{userName}</span>
           </button>
         </div>
       </div>
