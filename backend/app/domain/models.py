@@ -11,9 +11,6 @@ class Turn(BaseModel):
     collector_transcript: str
     customer_text: str
     suggestions: list[dict] = Field(default_factory=list)
-    classification: str = ""
-    confidence: float = 0.0
-    reasoning: str = ""
 
 
 class SessionCreate(BaseModel):

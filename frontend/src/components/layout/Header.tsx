@@ -1,8 +1,13 @@
 const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
 
-export default function Header() {
-  const title = useDummyData ? "All Accounts" : "Collections";
-  const userName = useDummyData ? "Test User" : "Sarah Smith";
+interface Props {
+  user?: { full_name: string };
+  onLogout?: () => void;
+}
+
+export default function Header({ user, onLogout }: Props) {
+  const title = useDummyData ? "All Accounts" : "All Accounts";
+  const userName = user?.full_name || "Agent";
 
   return (
     <div
@@ -40,14 +45,24 @@ export default function Header() {
             </span>
           </div>
 
-          <button className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded transition-colors">
-            <div className="h-8 w-8 bg-teal-200 rounded-full flex items-center justify-center">
-              <svg className="h-5 w-5 text-teal-700" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <span className="text-sm font-medium">{userName}</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded transition-colors">
+              <div className="h-8 w-8 bg-teal-200 rounded-full flex items-center justify-center">
+                <svg className="h-5 w-5 text-teal-700" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <span className="text-sm font-medium">{userName}</span>
+            </button>
+            {onLogout && (
+              <button
+                onClick={onLogout}
+                className="px-3 py-1.5 text-xs text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

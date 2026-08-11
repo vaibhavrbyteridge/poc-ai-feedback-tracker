@@ -34,7 +34,6 @@ class MockLLM:
         customer_utterance: str,
         rag_context: str | None,
         company_name: str,
-        corrections: list[dict] | None = None,
     ) -> dict:
         balance_hint = ""
         if rag_context and "balance" in rag_context.lower():
@@ -43,18 +42,9 @@ class MockLLM:
                 balance_hint = f" referencing the ${m.group(1)} balance"
 
         return {
-            "classification": "financial_hardship",
-            "confidence": 0.75,
-            "reasoning": "Customer indicates difficulty paying due to financial constraints.",
             "suggestions": [
                 {"text": f"I understand this is stressful. Let's find a payment arrangement{balance_hint} that works for your budget.", "tone": "empathetic"},
                 {"text": "I can email verification of the debt to you today — would that help us move forward?", "tone": "neutral"},
                 {"text": "If we set up a plan now, I can request a pause on additional fees while you catch up.", "tone": "firm"},
             ],
-            "current_phase": "probe",
-            "phases_completed": ["intro"],
-            "next_step": "Assess the customer's financial situation and ability to pay.",
-            "alerts": [],
-            "compliance_disclosed": True,
-            "identity_verified": True,
         }

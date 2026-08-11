@@ -121,17 +121,6 @@ class GroqLLM:
         template = self._jinja.get_template("copilot_system.j2")
         system_prompt = template.render(company_name=company_name)
 
-        # Inject past corrections as few-shot examples
-        if corrections:
-            corrections_block = "\n\n## Past classification corrections for this customer (learn from these):\n"
-            for c in corrections:
-                corrections_block += (
-                    f'- Customer said: "{c["customer_text"][:100]}"\n'
-                    f'  AI classified: {c["ai_classification"]} → Collector corrected to: {c["collector_correction"]}\n'
-                )
-            corrections_block += "\nAdjust your classification based on these corrections.\n"
-            system_prompt += corrections_block
-
         user_block = f"""Recent exchange:
 Collector: {collector_utterance}
 Customer: {customer_utterance}
@@ -140,12 +129,8 @@ Customer: {customer_utterance}
         if rag_context:
             user_block += f"Customer account context:\n{rag_context}\n\n"
         user_block += (
-            'Respond with JSON only: {"current_phase": "intro|probe|negotiate|close", '
-            '"phases_completed": [...], "next_step": "...", "alerts": [...], '
-            '"compliance_disclosed": bool, "identity_verified": bool, '
-            '"classification": "...", "confidence": 0.0-1.0, '
-            '"reasoning": "...", "suggestions": [{"text": "...", "tone": "empathetic|firm|neutral"}, ...]} '
-            "(detect phase, classify customer statement, and provide max 3 suggestions)."
+            'Respond with JSON only: {"suggestions": [{"text": "...", "tone": "empathetic|firm|neutral"}, ...]} '
+            "(provide max 3 suggestions)."
         )
 
         raw = await self._chat(
@@ -154,7 +139,7 @@ Customer: {customer_utterance}
                 {"role": "user", "content": user_block},
             ],
             temperature=0.7,
-            max_tokens=700,
+            max_tokens=350,
             json_mode=True,
         )
 
@@ -166,35 +151,6 @@ Customer: {customer_utterance}
                 data = json.loads(match.group())
             else:
                 data = {}
-
-        # Extract classification
-        valid_categories = {
-            "financial_hardship", "intentional_delay", "dispute", "confusion", "cooperative"
-        }
-        classification = data.get("classification", "confusion")
-        if classification not in valid_categories:
-            classification = "confusion"
-        confidence = data.get("confidence", 0.5)
-        if not isinstance(confidence, (int, float)):
-            confidence = 0.5
-        confidence = max(0.0, min(1.0, float(confidence)))
-        reasoning = data.get("reasoning", "")
-
-        # Extract phase detection
-        valid_phases = {"intro", "probe", "negotiate", "close"}
-        current_phase = data.get("current_phase", "intro")
-        if current_phase not in valid_phases:
-            current_phase = "intro"
-        phases_completed = data.get("phases_completed", [])
-        if not isinstance(phases_completed, list):
-            phases_completed = []
-        phases_completed = [p for p in phases_completed if p in valid_phases]
-        next_step = data.get("next_step", "")
-        alerts = data.get("alerts", [])
-        if not isinstance(alerts, list):
-            alerts = []
-        compliance_disclosed = bool(data.get("compliance_disclosed", False))
-        identity_verified = bool(data.get("identity_verified", False))
 
         # Extract suggestions
         suggestions_raw = data.get("suggestions", [])
@@ -208,15 +164,4 @@ Customer: {customer_utterance}
             elif isinstance(s, str) and s.strip():
                 normalized.append({"text": s, "tone": "neutral"})
 
-        return {
-            "classification": classification,
-            "confidence": confidence,
-            "reasoning": reasoning,
-            "suggestions": normalized[:3],
-            "current_phase": current_phase,
-            "phases_completed": phases_completed,
-            "next_step": next_step,
-            "alerts": alerts,
-            "compliance_disclosed": compliance_disclosed,
-            "identity_verified": identity_verified,
-        }
+        return {"suggestions": normalized[:3]}

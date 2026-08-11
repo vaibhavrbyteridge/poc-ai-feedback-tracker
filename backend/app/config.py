@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     groq_api_key: str = ""
     groq_model: str = "llama-3.3-70b-versatile"
     database_url: str = "postgresql://postgres:postgres@localhost:5432/debt_sim"
+    mysql_host: str = "localhost"
+    mysql_port: int = 3306
+    mysql_user: str = "root"
+    mysql_password: str = "test"
+    mysql_database: str = "performance_coaching"
     cors_origins: str = "http://localhost:5173"
     force_mock_stt: bool = False
     force_mock_llm: bool = False

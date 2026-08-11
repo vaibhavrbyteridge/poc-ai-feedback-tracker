@@ -30,7 +30,7 @@
         "installmentsPaid": 6,
         "installmentsRemaining": 30,
         "lastPaymentDate": "2026-06-10",
-        "monthlyInstallment": 453.0,
+        "monthlyInstallment": 400,
         "nextPaymentDate": "2025-12-10",
         "paymentDay": 10,
         "paymentMethod": "Credit Card",
@@ -41,7 +41,7 @@
       "status": "Delinquent"
     },
     "basicInfo": {
-      "address": "14 MG Road",
+      "address": "22 Brigade Road, Flat 3A",
       "address2": "Flat 6B",
       "cPhone": 9886541230,
       "city": "Bengaluru",
@@ -283,6 +283,53 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
+    ],
+    "phone_numbers": [
+      {
+        "phone": "9886541230",
+        "contact_name": "Rohan Verma",
+        "email": "rohan.verma@email.com",
+        "type": "Cell Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": false,
+        "do_not_text": false,
+        "do_not_email": false,
+        "is_main": true
+      },
+      {
+        "phone": "9886541231",
+        "contact_name": "Rohan V",
+        "email": "",
+        "type": "Home Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": true,
+        "do_not_text": true,
+        "do_not_email": false,
+        "is_main": false
+      },
+      {
+        "phone": "9886541232",
+        "contact_name": "Meera Verma",
+        "email": "meera.v@email.com",
+        "type": "Cell Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": true,
+        "do_not_text": true,
+        "do_not_email": false,
+        "is_main": false
+      }
+    ],
+    "bankruptcyCases": [
+      {
+        "caseNumber": "BK-2024-1102",
+        "chapter": "Chapter 13",
+        "petitionDate": "2024-11-15",
+        "status": "Active",
+        "dischargeDate": ""
+      }
     ]
   },
   {
@@ -290,7 +337,7 @@
       "accountHolder": "Priyanka Reddy",
       "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
       "accountNumber": "PR-6104",
-      "accountType": "Personal Loan",
+      "accountType": "Personal Loann",
       "daysPastDue": 130,
       "defaultReason": "No payment for 120+ days",
       "loanDetails": {
@@ -316,7 +363,7 @@
         "installmentsPaid": 11,
         "installmentsRemaining": 49,
         "lastPaymentDate": "2028-02-15",
-        "monthlyInstallment": 543.33,
+        "monthlyInstallment": 1500.0,
         "nextPaymentDate": "2026-02-15",
         "paymentDay": 15,
         "paymentMethod": "ACH",
@@ -327,19 +374,19 @@
       "status": "Defaulted"
     },
     "basicInfo": {
-      "address": "27 Banjara Hills Road",
+      "address": "88 Anna Nagar, Chennai 600040",
       "address2": "Tower B, Floor 9",
       "cPhone": 9912345678,
       "city": "Hyderabad",
       "country": "India",
       "description": "Personal loan default",
       "dob": "1989-12-20T00:00:00",
-      "email": "priyanka.reddy@email.com",
+      "email": "priyanka.reddy.only@yahoo.com",
       "fullAddress": "27 Banjara Hills Road Tower B, Floor 9 Hyderabad TG 500034",
       "fullName": "Priyanka Reddy",
       "hPhone": 9923456781,
       "langCode": "ENG",
-      "language": "English",
+      "language": "Kannada",
       "partyType": "FirstParty",
       "state": "TG",
       "timezone": "IST",
@@ -590,6 +637,57 @@
         "method": "ACH",
         "principalPaid": 0.0,
         "status": "Failed"
+      }
+    ],
+    "phone_numbers": [
+      {
+        "phone": "9912345678",
+        "contact_name": "Priyanka ",
+        "email": "priyanka.reddy@email.com",
+        "type": "Cell Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": true,
+        "do_not_text": true,
+        "do_not_email": false
+      },
+      {
+        "phone": "9912345670",
+        "contact_name": "Priyanka R",
+        "email": "",
+        "type": "Work Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": false,
+        "do_not_text": false,
+        "do_not_email": false
+      },
+      {
+        "phone": "9912345680",
+        "contact_name": "Raj Reddy",
+        "email": "priyanka.new@gmail.com",
+        "type": "Cell Phone",
+        "status": "Inactive",
+        "timezone": "IST",
+        "do_not_call": false,
+        "do_not_text": false,
+        "do_not_email": false
+      }
+    ],
+    "bankruptcyCases": [
+      {
+        "caseNumber": "BK-2025-0234",
+        "chapter": "Chapter 7",
+        "petitionDate": "2025-02-10",
+        "status": "Closed",
+        "dischargeDate": "2025-08-10"
+      },
+      {
+        "caseNumber": "BK-2023-0891",
+        "chapter": "Chapter 13",
+        "petitionDate": "2023-06-20",
+        "status": "Dismissed",
+        "dischargeDate": ""
       }
     ]
   },
@@ -843,6 +941,45 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [
+      {
+        "phone": "9445123890",
+        "contact_name": "Arjun Nair",
+        "email": "arjun.nair@email.com",
+        "type": "Cell Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": false,
+        "do_not_text": false,
+        "do_not_email": false,
+        "is_main": true
+      },
+      {
+        "phone": "9445123891",
+        "contact_name": "Arjun Nair",
+        "email": "arjun.work@company.com",
+        "type": "Work Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": false,
+        "do_not_text": true,
+        "do_not_email": false,
+        "is_main": false
+      },
+      {
+        "phone": "9445123892",
+        "contact_name": "Lakshmi Nair",
+        "email": "lakshmi.n@email.com",
+        "type": "Home Phone",
+        "status": "Active",
+        "timezone": "IST",
+        "do_not_call": true,
+        "do_not_text": true,
+        "do_not_email": true,
+        "is_main": false
+      }
+    ],
+    "bankruptcyCases": []
   }
 ]

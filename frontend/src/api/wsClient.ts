@@ -7,15 +7,6 @@ export type WsInbound =
       customer_audio_base64: string;
       customer_audio_mime: string;
       suggestions: { text: string; tone: "empathetic" | "firm" | "neutral" }[];
-      classification: string;
-      confidence: number;
-      reasoning: string;
-      current_phase: string;
-      phases_completed: string[];
-      next_step: string;
-      alerts: string[];
-      compliance_disclosed: boolean;
-      identity_verified: boolean;
     }
   | { type: "error"; message: string };
 

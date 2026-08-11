@@ -283,7 +283,34 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [
+      {
+        "phone": "4155552891",
+        "contact_name": "David Chen",
+        "email": "david.chen@email.com",
+        "type": "Cell Phone",
+        "status": "Active",
+        "timezone": "PST",
+        "do_not_call": false,
+        "do_not_text": false,
+        "do_not_email": false,
+        "is_main": true
+      },
+      {
+        "phone": "4155552892",
+        "contact_name": "David Chen",
+        "email": "",
+        "type": "Work Phone",
+        "status": "Active",
+        "timezone": "PST",
+        "do_not_call": true,
+        "do_not_text": false,
+        "do_not_email": false,
+        "is_main": false
+      }
+    ],
+    "bankruptcyCases": []
   },
   {
     "accountInfo": {
@@ -631,7 +658,9 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [],
+    "bankruptcyCases": []
   },
   {
     "accountInfo": {
@@ -928,7 +957,9 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [],
+    "bankruptcyCases": []
   },
   {
     "accountInfo": {
@@ -1236,7 +1267,9 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [],
+    "bankruptcyCases": []
   },
   {
     "accountInfo": {
@@ -1488,7 +1521,9 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [],
+    "bankruptcyCases": []
   },
   {
     "accountInfo": {
@@ -1757,6 +1792,8 @@
         "principalPaid": 0.0,
         "status": "Failed"
       }
-    ]
+    ],
+    "phone_numbers": [],
+    "bankruptcyCases": []
   }
 ]

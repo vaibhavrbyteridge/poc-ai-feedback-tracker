@@ -2,7 +2,6 @@ import json
 
 from fastapi import APIRouter, HTTPException
 
-from app.db import save_session, get_session_log, list_sessions as db_list_sessions, get_customer_sessions, save_classification_override
 from app.domain.models import Session, SessionCreate, SessionResponse
 from app.domain.session_store import session_store
 from app.config import get_settings
@@ -64,13 +63,6 @@ async def create_session(body: SessionCreate):
         company_name=body.company_name,
     )
     session_store.create(session)
-    save_session(
-        session_id=session_id,
-        customer_id=body.customer_id,
-        customer_name=session.customer_name,
-        personality_id=body.personality_id,
-        company_name=body.company_name,
-    )
     return SessionResponse(
         session_id=session_id,
         customer_id=body.customer_id,
@@ -88,33 +80,11 @@ async def get_session(session_id: str):
     return session
 
 
-@router.get("/sessions/{session_id}/log")
-async def get_session_log_endpoint(session_id: str):
-    """Retrieve the full persisted conversation log for a session."""
-    log = get_session_log(session_id)
-    if not log:
-        raise HTTPException(status_code=404, detail="Session log not found")
-    return log
-
-
-@router.get("/logs")
-async def list_all_sessions():
-    """List all persisted sessions with turn counts."""
-    return db_list_sessions()
-
-
-@router.get("/customers/{customer_id}/conversations")
-async def get_customer_conversations(customer_id: str):
-    """Get all previous conversations for a specific customer."""
-    return get_customer_sessions(customer_id)
-
-
 @router.get("/sessions/{session_id}/opening-suggestions")
 async def get_opening_suggestions(session_id: str):
     """Generate opening suggestions for how to begin the call."""
     from app.providers.factory import get_copilot_llm
     from app.rag.factory import get_retriever
-    from app.db import get_classification_corrections
 
     session = session_store.get(session_id)
     if not session:
@@ -124,8 +94,6 @@ async def get_opening_suggestions(session_id: str):
     chunks = await retriever.retrieve(session.customer_id, "opening call")
     rag_context = "\n".join(c.text for c in chunks)
 
-    corrections = get_classification_corrections(session.customer_id)
-
     copilot = get_copilot_llm()
     result = await copilot.collector_suggestions(
         messages=[],
@@ -133,48 +101,125 @@ async def get_opening_suggestions(session_id: str):
         customer_utterance="(Call has not started yet — customer just picked up)",
         rag_context=rag_context,
         company_name=session.company_name,
-        corrections=corrections,
     )
-    return {
-        "suggestions": result.get("suggestions", []),
-        "classification": result.get("classification", ""),
-        "confidence": result.get("confidence", 0.0),
-        "reasoning": result.get("reasoning", ""),
-        "current_phase": result.get("current_phase", "intro"),
-        "phases_completed": result.get("phases_completed", []),
-        "next_step": result.get("next_step", ""),
-        "alerts": result.get("alerts", []),
-        "compliance_disclosed": result.get("compliance_disclosed", False),
-        "identity_verified": result.get("identity_verified", False),
-    }
+    return {"suggestions": result.get("suggestions", [])}
 
+
+# ─── Phone Number Update (writes back to JSON) ──────────────────────────
 
 from pydantic import BaseModel as _BaseModel
+from typing import List
 
 
-class OverrideRequest(_BaseModel):
-    turn_number: int
-    classification: str
+class PhoneNumberUpdate(_BaseModel):
+    phone: str
+    contact_name: str
+    email: str = ""
+    type: str
+    status: str
+    timezone: str
+    do_not_call: bool = False
+    do_not_text: bool = False
+    do_not_email: bool = False
 
 
-@router.post("/sessions/{session_id}/override-classification")
-async def override_classification(session_id: str, body: OverrideRequest):
-    """Allow collector to override the AI's classification for a turn."""
-    valid_categories = {
-        "financial_hardship", "intentional_delay", "dispute", "confusion", "cooperative"
-    }
-    if body.classification not in valid_categories:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid classification. Must be one of: {', '.join(sorted(valid_categories))}"
-        )
+@router.put("/customers/{customer_id}/phone-numbers")
+async def update_phone_numbers(customer_id: str, body: List[PhoneNumberUpdate]):
+    """Update phone numbers for a customer — writes back to the JSON file."""
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        customers_list = json.load(f)
 
-    updated = save_classification_override(
-        session_id=session_id,
-        turn_number=body.turn_number,
-        collector_override=body.classification,
-    )
-    if not updated:
-        raise HTTPException(status_code=404, detail="Turn not found")
+    found = False
+    for customer in customers_list:
+        if customer["accountInfo"]["accountNumber"] == customer_id:
+            customer["phone_numbers"] = [pn.model_dump() for pn in body]
+            # Sync main phone number's email/phone back to basicInfo
+            main_pn = next((pn for pn in customer["phone_numbers"] if pn.get("is_main")), None)
+            if main_pn:
+                customer["basicInfo"]["cPhone"] = main_pn["phone"]
+                if main_pn.get("email"):
+                    customer["basicInfo"]["email"] = main_pn["email"]
+                if main_pn.get("timezone"):
+                    customer["basicInfo"]["timezone"] = main_pn["timezone"]
+            found = True
+            break
 
-    return {"message": "Classification overridden", "classification": body.classification}
+    if not found:
+        raise HTTPException(status_code=404, detail="Customer not found")
+
+    with open(DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(customers_list, f, indent=2, ensure_ascii=False)
+
+    return {"message": "Phone numbers updated"}
+
+
+class BankruptcyCaseUpdate(_BaseModel):
+    caseNumber: str
+    chapter: str
+    petitionDate: str
+    status: str
+    dischargeDate: str = ""
+
+
+@router.put("/customers/{customer_id}/bankruptcy-cases")
+async def update_bankruptcy_cases(customer_id: str, body: List[BankruptcyCaseUpdate]):
+    """Update bankruptcy cases for a customer — writes back to the JSON file."""
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        customers_list = json.load(f)
+
+    found = False
+    for customer in customers_list:
+        if customer["accountInfo"]["accountNumber"] == customer_id:
+            customer["bankruptcyCases"] = [bc.model_dump() for bc in body]
+            found = True
+            break
+
+    if not found:
+        raise HTTPException(status_code=404, detail="Customer not found")
+
+    with open(DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(customers_list, f, indent=2, ensure_ascii=False)
+
+    return {"message": "Bankruptcy cases updated"}
+
+
+@router.put("/customers/{customer_id}/info")
+async def update_customer_info(customer_id: str, body: dict):
+    """Update customer basic info, account info, or loan details — writes back to JSON."""
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        customers_list = json.load(f)
+
+    found = False
+    for customer in customers_list:
+        if customer["accountInfo"]["accountNumber"] == customer_id:
+            # Merge updates into existing data
+            if "basicInfo" in body:
+                customer["basicInfo"].update(body["basicInfo"])
+                # Sync email/phone to the main phone_numbers entry
+                phone_numbers = customer.get("phone_numbers", [])
+                main_pn = next((pn for pn in phone_numbers if pn.get("is_main")), None)
+                if main_pn:
+                    if "email" in body["basicInfo"]:
+                        main_pn["email"] = body["basicInfo"]["email"]
+                    if "cPhone" in body["basicInfo"]:
+                        main_pn["phone"] = str(body["basicInfo"]["cPhone"])
+                    if "timezone" in body["basicInfo"]:
+                        main_pn["timezone"] = body["basicInfo"]["timezone"]
+            if "accountInfo" in body:
+                for key, val in body["accountInfo"].items():
+                    if key == "loanDetails":
+                        customer["accountInfo"]["loanDetails"].update(val)
+                    elif key == "paymentPlan":
+                        customer["accountInfo"]["paymentPlan"].update(val)
+                    else:
+                        customer["accountInfo"][key] = val
+            found = True
+            break
+
+    if not found:
+        raise HTTPException(status_code=404, detail="Customer not found")
+
+    with open(DATA_PATH, "w", encoding="utf-8") as f:
+        json.dump(customers_list, f, indent=2, ensure_ascii=False)
+
+    return {"message": "Customer info updated"}
