@@ -7,6 +7,7 @@ from pathlib import Path
 
 from app.config import get_settings
 from app.domain.models import Message
+from app.utils.llm_output import reasoning_params as _reasoning_params
 from app.utils.llm_output import strip_reasoning_content
 
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
@@ -34,6 +35,7 @@ class GroqLLM:
         settings = get_settings()
         self._api_key = settings.groq_api_key.strip()
         self._model = settings.groq_model
+        self._reasoning_effort = settings.groq_reasoning_effort
         self._jinja = Environment(
             loader=FileSystemLoader(str(PROMPTS_DIR)),
             autoescape=False,
@@ -53,6 +55,10 @@ class GroqLLM:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
+        # gpt-oss reasoning models emit chain-of-thought in a separate `reasoning`
+        # field. Exclude it so the response stays fast and the `content` field holds
+        # only the final answer. `reasoning_effort` tunes latency vs. quality.
+        body.update(_reasoning_params(self._model, self._reasoning_effort))
         if json_mode:
             body["response_format"] = {"type": "json_object"}
 

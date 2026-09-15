@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 
 from app.config import get_settings
-from app.utils.llm_output import strip_reasoning_content
+from app.utils.llm_output import reasoning_params, strip_reasoning_content
 
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
 PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
@@ -59,6 +59,9 @@ Respond with JSON only. Score each dimension and provide ideal responses for eve
         "temperature": 0.3,
         "max_tokens": 2000,
         "response_format": {"type": "json_object"},
+        # Scoring is quality-sensitive and runs post-call (not real-time),
+        # so allow higher reasoning effort on gpt-oss models.
+        **reasoning_params(model, "high"),
     }
 
     async with httpx.AsyncClient(timeout=90.0) as client:
@@ -148,6 +151,7 @@ Only mark as achieved if there is clear evidence in the transcript."""
         "temperature": 0.2,
         "max_tokens": 500,
         "response_format": {"type": "json_object"},
+        **reasoning_params(model, settings.groq_reasoning_effort),
     }
 
     async with httpx.AsyncClient(timeout=60.0) as client:
@@ -205,6 +209,7 @@ Write in second person ("You..."). Be encouraging but honest. Do not use bullet 
         ],
         "temperature": 0.5,
         "max_tokens": 300,
+        **reasoning_params(model, settings.groq_reasoning_effort),
     }
 
     async with httpx.AsyncClient(timeout=60.0) as client:

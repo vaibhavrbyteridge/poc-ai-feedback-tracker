@@ -11,7 +11,10 @@ class Settings(BaseSettings):
 
     assemblyai_api_key: str = ""
     groq_api_key: str = ""
-    groq_model: str = "llama-3.3-70b-versatile"
+    groq_model: str = "openai/gpt-oss-120b"
+    # Reasoning effort for gpt-oss models: none | default | low | medium | high.
+    # Low keeps latency down for real-time turns; scoring overrides to a higher value.
+    groq_reasoning_effort: str = "low"
     database_url: str = "postgresql://postgres:postgres@localhost:5432/debt_sim"
     mysql_host: str = "localhost"
     mysql_port: int = 3306
