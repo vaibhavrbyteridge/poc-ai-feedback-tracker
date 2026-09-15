@@ -669,8 +669,8 @@
         "type": "Cell Phone",
         "status": "Inactive",
         "timezone": "IST",
-        "do_not_call": false,
-        "do_not_text": false,
+        "do_not_call": true,
+        "do_not_text": true,
         "do_not_email": false
       }
     ],
