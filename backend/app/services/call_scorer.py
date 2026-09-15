@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 
 from app.config import get_settings
-from app.utils.llm_output import reasoning_params, strip_reasoning_content
+from app.utils.llm_output import extract_message_content, reasoning_params
 
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
 PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
@@ -57,11 +57,15 @@ Respond with JSON only. Score each dimension and provide ideal responses for eve
             {"role": "user", "content": user_prompt},
         ],
         "temperature": 0.3,
-        "max_tokens": 2000,
+        # gpt-oss reasoning tokens are drawn from this budget before any answer
+        # is produced. Scoring emits a large JSON payload (6 dimensions + ideal
+        # responses per turn), so the budget must cover reasoning + output.
+        "max_tokens": 8000,
         "response_format": {"type": "json_object"},
-        # Scoring is quality-sensitive and runs post-call (not real-time),
-        # so allow higher reasoning effort on gpt-oss models.
-        **reasoning_params(model, "high"),
+        # Scoring is quality-sensitive and runs post-call (not real-time). Use
+        # medium effort — enough reasoning for good scores without exhausting the
+        # budget the way "high" did (which produced empty output → 400).
+        **reasoning_params(model, "medium"),
     }
 
     async with httpx.AsyncClient(timeout=90.0) as client:
@@ -77,9 +81,7 @@ Respond with JSON only. Score each dimension and provide ideal responses for eve
     if resp.is_error:
         raise RuntimeError(f"Groq scoring failed ({resp.status_code}): {resp.text[:500]}")
 
-    data = resp.json()
-    content = (data["choices"][0]["message"]["content"] or "").strip()
-    content = strip_reasoning_content(content)
+    content = extract_message_content(resp.json())
 
     try:
         result = json.loads(content)
@@ -149,7 +151,9 @@ Only mark as achieved if there is clear evidence in the transcript."""
             {"role": "user", "content": user_prompt},
         ],
         "temperature": 0.2,
-        "max_tokens": 500,
+        # Reasoning tokens share this budget; 500 was too tight for gpt-oss and
+        # would truncate before the JSON was complete.
+        "max_tokens": 2500,
         "response_format": {"type": "json_object"},
         **reasoning_params(model, settings.groq_reasoning_effort),
     }
@@ -164,8 +168,8 @@ Only mark as achieved if there is clear evidence in the transcript."""
     if resp.is_error:
         return []
 
-    content = strip_reasoning_content((resp.json()["choices"][0]["message"]["content"] or "").strip())
     try:
+        content = extract_message_content(resp.json())
         data = json.loads(content)
         return data.get("achievements", [])
     except Exception:
@@ -208,7 +212,9 @@ Write in second person ("You..."). Be encouraging but honest. Do not use bullet 
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.5,
-        "max_tokens": 300,
+        # gpt-oss reasoning shares this budget; 300 could be fully consumed by
+        # reasoning, leaving no room for the coaching paragraph.
+        "max_tokens": 1500,
         **reasoning_params(model, settings.groq_reasoning_effort),
     }
 
@@ -222,5 +228,7 @@ Write in second person ("You..."). Be encouraging but honest. Do not use bullet 
     if resp.is_error:
         return "Unable to generate feedback at this time. Please try again later."
 
-    content = (resp.json()["choices"][0]["message"]["content"] or "").strip()
-    return strip_reasoning_content(content)
+    try:
+        return extract_message_content(resp.json())
+    except RuntimeError:
+        return "Unable to generate feedback at this time. Please try again later."

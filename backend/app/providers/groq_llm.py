@@ -7,8 +7,8 @@ from pathlib import Path
 
 from app.config import get_settings
 from app.domain.models import Message
+from app.utils.llm_output import extract_message_content
 from app.utils.llm_output import reasoning_params as _reasoning_params
-from app.utils.llm_output import strip_reasoning_content
 
 GROQ_CHAT_URL = "https://api.groq.com/openai/v1/chat/completions"
 PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
@@ -75,9 +75,7 @@ class GroqLLM:
             raise RuntimeError(
                 f"Groq chat failed ({resp.status_code}): {_http_error_detail(resp)}"
             )
-        data = resp.json()
-        content = (data["choices"][0]["message"]["content"] or "").strip()
-        return strip_reasoning_content(content)
+        return extract_message_content(resp.json())
 
     def _to_chat_messages(self, messages: list[Message]) -> list[dict]:
         out: list[dict] = []
@@ -112,7 +110,9 @@ class GroqLLM:
         return await self._chat(
             chat_messages,
             temperature=0.9,
-            max_tokens=256,
+            # gpt-oss reasoning tokens draw from this budget before the reply is
+            # produced; 256 could be exhausted by reasoning alone.
+            max_tokens=1024,
         )
 
     async def collector_suggestions(
@@ -145,7 +145,9 @@ Customer: {customer_utterance}
                 {"role": "user", "content": user_block},
             ],
             temperature=0.7,
-            max_tokens=350,
+            # JSON mode + reasoning share this budget; 350 was too tight and
+            # could truncate the suggestions JSON before completion.
+            max_tokens=1500,
             json_mode=True,
         )
 
