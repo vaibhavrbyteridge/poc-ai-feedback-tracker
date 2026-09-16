@@ -1,4 +1,9 @@
-"""MySQL database operations for authentication and call persistence."""
+"""MySQL database operations for call persistence, scoring, and performance.
+
+Single-collector POC: no authentication or agent-management operations live
+here. The ``user_id`` columns simply scope records to the one hardcoded
+collector (see app.collector).
+"""
 
 import json
 import pymysql
@@ -18,94 +23,6 @@ def _get_connection() -> pymysql.Connection:
         cursorclass=pymysql.cursors.DictCursor,
         autocommit=True,
     )
-
-
-# ─── Auth ───────────────────────────────────────────────────────────────
-
-def authenticate_user(username: str, password: str) -> dict | None:
-    """Verify username/password. Returns user dict or None."""
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT id, username, full_name, role, email, is_active "
-                "FROM users WHERE username = %s AND password_hash = %s",
-                (username, password),
-            )
-            user = cur.fetchone()
-            if user and user["is_active"]:
-                return user
-            return None
-    finally:
-        conn.close()
-
-
-# ─── Agent CRUD (admin) ─────────────────────────────────────────────────
-
-def list_agents() -> list[dict]:
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT id, username, full_name, role, email, is_active, created_at "
-                "FROM users WHERE role = 'agent' ORDER BY created_at DESC"
-            )
-            return cur.fetchall()
-    finally:
-        conn.close()
-
-
-def get_agent(agent_id: int) -> dict | None:
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT id, username, full_name, role, email, is_active "
-                "FROM users WHERE id = %s AND role = 'agent'",
-                (agent_id,),
-            )
-            return cur.fetchone()
-    finally:
-        conn.close()
-
-
-def create_agent(username: str, password: str, full_name: str, email: str) -> dict:
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "INSERT INTO users (username, password_hash, full_name, role, email) "
-                "VALUES (%s, %s, %s, 'agent', %s)",
-                (username, password, full_name, email),
-            )
-            agent_id = cur.lastrowid
-            return {"id": agent_id, "username": username, "full_name": full_name, "email": email, "role": "agent", "is_active": True}
-    finally:
-        conn.close()
-
-
-def update_agent(agent_id: int, full_name: str, email: str, is_active: bool) -> bool:
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "UPDATE users SET full_name = %s, email = %s, is_active = %s "
-                "WHERE id = %s AND role = 'agent'",
-                (full_name, email, is_active, agent_id),
-            )
-            return cur.rowcount > 0
-    finally:
-        conn.close()
-
-
-def delete_agent(agent_id: int) -> bool:
-    conn = _get_connection()
-    try:
-        with conn.cursor() as cur:
-            cur.execute("DELETE FROM users WHERE id = %s AND role = 'agent'", (agent_id,))
-            return cur.rowcount > 0
-    finally:
-        conn.close()
 
 
 # ─── Call Sessions ───────────────────────────────────────────────────────

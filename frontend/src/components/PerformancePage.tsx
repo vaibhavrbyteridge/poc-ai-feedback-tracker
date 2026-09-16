@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { AgentPerformance, FeedbackGoal, WeeklyData, fetchAgentPerformance, fetchFeedbacks, updateFeedbackStatus, rejectFeedback, fetchWeeklyPerformance, fetchAiFeedback, generateAiFeedback } from "../api/client";
+import { AgentPerformance, FeedbackGoal, WeeklyData, COLLECTOR, fetchAgentPerformance, fetchFeedbacks, updateFeedbackStatus, rejectFeedback, fetchWeeklyPerformance, fetchAiFeedback, generateAiFeedback } from "../api/client";
 
 interface Props {
-  userId: number;
-  userName: string;
   onBack: () => void;
 }
 
-export default function PerformancePage({ userId, userName, onBack }: Props) {
+// Single hardcoded collector — My Performance always shows this collector.
+const userId = COLLECTOR.id;
+const userName = COLLECTOR.full_name;
+
+export default function PerformancePage({ onBack }: Props) {
   const [perf, setPerf] = useState<AgentPerformance | null>(null);
   const [feedbacks, setFeedbacks] = useState<FeedbackGoal[]>([]);
   const [weeklyData, setWeeklyData] = useState<WeeklyData[]>([]);

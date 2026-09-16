@@ -1,97 +1,30 @@
-"""Authentication and user management API routes."""
+"""Call history, scoring, performance, and feedback API routes.
+
+This is a single-collector POC: there is no login, authentication, or
+multi-user management. All routes operate on behalf of the one hardcoded
+collector (see app.collector). Endpoints keep the ``user_id`` field purely
+as the data column that scopes call/performance records to that collector.
+"""
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
+from app.collector import COLLECTOR_ID
 from app.mysql_db import (
-    authenticate_user,
-    list_agents,
-    get_agent,
-    create_agent,
-    update_agent,
-    delete_agent,
     save_call_session,
     get_user_call_sessions,
     get_call_session_turns,
     delete_call_session,
 )
 
-router = APIRouter(prefix="/api", tags=["auth"])
-
-
-# ─── Auth ───────────────────────────────────────────────────────────────
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-@router.post("/login")
-async def login(body: LoginRequest):
-    user = authenticate_user(body.username, body.password)
-    if not user:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    return {
-        "id": user["id"],
-        "username": user["username"],
-        "full_name": user["full_name"],
-        "role": user["role"],
-        "email": user["email"],
-    }
-
-
-# ─── Agent CRUD (admin) ─────────────────────────────────────────────────
-
-@router.get("/agents")
-async def list_all_agents():
-    return list_agents()
-
-
-class CreateAgentRequest(BaseModel):
-    username: str
-    password: str = "1234"
-    full_name: str
-    email: str = ""
-
-
-@router.post("/agents")
-async def create_new_agent(body: CreateAgentRequest):
-    try:
-        agent = create_agent(body.username, body.password, body.full_name, body.email)
-        return agent
-    except Exception as e:
-        if "Duplicate" in str(e):
-            raise HTTPException(status_code=400, detail="Username already exists")
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-class UpdateAgentRequest(BaseModel):
-    full_name: str
-    email: str = ""
-    is_active: bool = True
-
-
-@router.put("/agents/{agent_id}")
-async def update_existing_agent(agent_id: int, body: UpdateAgentRequest):
-    updated = update_agent(agent_id, body.full_name, body.email, body.is_active)
-    if not updated:
-        raise HTTPException(status_code=404, detail="Agent not found")
-    return {"message": "Agent updated"}
-
-
-@router.delete("/agents/{agent_id}")
-async def delete_existing_agent(agent_id: int):
-    deleted = delete_agent(agent_id)
-    if not deleted:
-        raise HTTPException(status_code=404, detail="Agent not found")
-    return {"message": "Agent deleted"}
+router = APIRouter(prefix="/api", tags=["calls"])
 
 
 # ─── Call History ────────────────────────────────────────────────────────
 
 class SaveCallRequest(BaseModel):
     session_id: str
-    user_id: int
+    user_id: int = COLLECTOR_ID
     customer_id: str
     customer_name: str
     personality_id: str
@@ -151,7 +84,7 @@ async def delete_call(user_id: int, session_id: str):
 
 class ScoreCallRequest(BaseModel):
     session_id: str
-    user_id: int
+    user_id: int = COLLECTOR_ID
     turns: list[dict]
     dialed_phone: str = ""
 
@@ -316,7 +249,7 @@ async def get_feedbacks(user_id: int):
 
 
 class CreateFeedbackRequest(BaseModel):
-    user_id: int
+    user_id: int = COLLECTOR_ID
     session_id: str | None = None
     feedback_text: str
     target_days: int = 30
@@ -512,7 +445,7 @@ async def get_prefs(customer_id: str):
 
 
 class ContactPrefsRequest(BaseModel):
-    user_id: int
+    user_id: int = COLLECTOR_ID
     session_id: str = ""
     cease_all_calls: bool = False
     cease_all_texts: bool = False
@@ -532,7 +465,7 @@ async def save_prefs(customer_id: str, body: ContactPrefsRequest):
 
 class AcceptAllRequest(BaseModel):
     session_id: str
-    user_id: int
+    user_id: int = COLLECTOR_ID
     customer_id: str
 
 

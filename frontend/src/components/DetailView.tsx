@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { CustomerDetail, SessionInfo, User, createSession, fetchPersonalities, fetchCustomerDetails, saveCallHistory, fetchCallHistory, fetchCallTurns, deleteCallHistory, CallHistoryItem, scoreCall, ScoreResult, fetchCallScore, deleteCallScore, createFeedback, updatePhoneNumbers, updateBankruptcyCases, saveDisposition, fetchDisposition, updateCustomerInfo, ActionItem, fetchActionItems, fetchCustomerActionItems, completeActionItem, EditFlags, fetchEditFlags, clearEditFlag, fetchContactPreferences, ContactPreferences, saveContactPreferences, acceptAllActionItems } from "../api/client";
+import { useState, useEffect, useCallback, type ReactNode } from "react";
+import { CustomerDetail, SessionInfo, COLLECTOR, createSession, fetchPersonalities, fetchCustomerDetails, saveCallHistory, fetchCallHistory, fetchCallTurns, deleteCallHistory, CallHistoryItem, scoreCall, ScoreResult, fetchCallScore, deleteCallScore, createFeedback, updatePhoneNumbers, updateBankruptcyCases, saveDisposition, fetchDisposition, updateCustomerInfo, ActionItem, fetchActionItems, fetchCustomerActionItems, completeActionItem, EditFlags, fetchEditFlags, fetchContactPreferences, ContactPreferences, acceptAllActionItems } from "../api/client";
 import { TranscriptTurn } from "../hooks/useConversation";
 import CallSimulator from "./CallSimulator";
 
@@ -17,10 +17,12 @@ interface PreviousCall {
 interface Props {
   customer: CustomerDetail;
   onBack: () => void;
-  user: User;
 }
 
-export default function DetailView({ customer, onBack, user }: Props) {
+// Single hardcoded collector — no login/user selection in this POC.
+const user = COLLECTOR;
+
+export default function DetailView({ customer, onBack }: Props) {
   const [session, setSession] = useState<SessionInfo | null>(null);
   const [personalities, setPersonalities] = useState<string[]>([]);
   const [selectedPersonality, setSelectedPersonality] = useState("cooperative");
@@ -41,9 +43,9 @@ export default function DetailView({ customer, onBack, user }: Props) {
   const [disposition, setDisposition] = useState<{ disposition: string; call_type: string; notes: string }>({ disposition: "", call_type: "Outbound", notes: "" });
   const [, forceRender] = useState(0);
   const [actionItems, setActionItems] = useState<ActionItem[]>([]);
-  const [customerActionItems, setCustomerActionItems] = useState<ActionItem[]>([]);
+  const [, setCustomerActionItems] = useState<ActionItem[]>([]);
   const [editFlags, setEditFlags] = useState<EditFlags[]>([]);
-  const [contactPrefs, setContactPrefs] = useState<ContactPreferences>({ cease_all_calls: false, cease_all_texts: false, cease_all_emails: false, cease_all_contact: false });
+  const [, setContactPrefs] = useState<ContactPreferences>({ cease_all_calls: false, cease_all_texts: false, cease_all_emails: false, cease_all_contact: false });
 
   useEffect(() => {
     fetchPersonalities().then((p) => setPersonalities(p.map((x) => x.id)));
@@ -138,7 +140,7 @@ export default function DetailView({ customer, onBack, user }: Props) {
         transcript = turns.map((t) => ({
           collector: t.collector,
           customer: t.customer,
-          suggestions: t.suggestions,
+          suggestions: t.suggestions as TranscriptTurn["suggestions"],
         }));
       } catch {
         console.error("Failed to load turns");
@@ -309,7 +311,7 @@ export default function DetailView({ customer, onBack, user }: Props) {
                       { key: "negotiation", label: "Negotiation", color: "#f97316" },
                       { key: "objection_handling", label: "Objection Handling", color: "#14b8a6" },
                       { key: "closure", label: "Call Closure", color: "#22c55e" },
-                    ] as const).map(({ key, label, color }) => {
+                    ] as const).map(({ key, label, color }): ReactNode => {
                       const comp = (scoringResult as unknown as Record<string, unknown>)?.comparison as Record<string, { diff: number; direction: string }> | undefined;
                       const dimComp = comp?.[key];
                       return (
@@ -373,7 +375,7 @@ export default function DetailView({ customer, onBack, user }: Props) {
                   </div>
 
                   {/* Feedback Achievements */}
-                  {(scoringResult as unknown as Record<string, unknown>)?.feedback_achievements && ((scoringResult as unknown as Record<string, unknown>).feedback_achievements as Array<{feedback_id: number; achieved: boolean; evidence: string}>).filter((a) => a.achieved).length > 0 && (
+                  {(((scoringResult as unknown as Record<string, unknown>)?.feedback_achievements as Array<{feedback_id: number; achieved: boolean; evidence: string}> | undefined) ?? []).filter((a) => a.achieved).length > 0 && (
                     <div className="mt-3 bg-emerald-50 border border-emerald-100 rounded-xl p-4">
                       <h4 className="text-xs font-bold text-emerald-700 mb-2 flex items-center gap-1">
                         <span>🎯</span> Goals Achieved in This Call
@@ -1196,14 +1198,6 @@ function EditableRow({ label, value, onSave, hasAlert, suggestedValue }: { label
         <svg className="inline-block ml-2 h-3 w-3 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
       </td>
     </tr>
-  );
-}
-
-function ToggleBadge({ active }: { active: boolean }) {
-  return (
-    <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${active ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}>
-      {active ? "Yes" : "No"}
-    </span>
   );
 }
 

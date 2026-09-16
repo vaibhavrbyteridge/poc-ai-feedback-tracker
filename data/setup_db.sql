@@ -2,19 +2,22 @@
 CREATE DATABASE IF NOT EXISTS performance_coaching;
 USE performance_coaching;
 
--- Users table (admin + agents)
+-- Collector table.
+-- This is a SINGLE-collector POC: there is no login, authentication, or
+-- multi-user management. This table exists only to (a) satisfy the
+-- call_sessions.user_id foreign key and (b) store the collector's AI feedback.
+-- Exactly one row is seeded: the demo collector with id = 5, which matches
+-- COLLECTOR_ID in the backend/frontend and owns all seeded call history.
 DROP TABLE IF EXISTS call_turns;
 DROP TABLE IF EXISTS call_sessions;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
     full_name VARCHAR(100) NOT NULL,
-    role ENUM('admin', 'agent') NOT NULL DEFAULT 'agent',
     email VARCHAR(100),
-    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    ai_feedback TEXT DEFAULT NULL,
+    ai_feedback_updated_at TIMESTAMP NULL DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -49,10 +52,7 @@ CREATE TABLE call_turns (
 CREATE INDEX idx_sessions_user ON call_sessions(user_id);
 CREATE INDEX idx_turns_session ON call_turns(session_id);
 
--- Seed data: admin + agents (password: 1234 hashed with bcrypt)
--- We'll use plaintext for now and hash in the app
-INSERT INTO users (username, password_hash, full_name, role, email) VALUES
-('admin', '1234', 'Administrator', 'admin', 'admin@acmecollections.com'),
-('vaibhav', '1234', 'Vaibhav Rokde', 'agent', 'vaibhav.rokde@acmecollections.com'),
-('priya', '1234', 'Priya Sharma', 'agent', 'priya.sharma@acmecollections.com'),
-('rahul', '1234', 'Rahul Mehta', 'agent', 'rahul.mehta@acmecollections.com');
+-- Seed the single hardcoded collector with id = 5 so it matches COLLECTOR_ID
+-- in the app and owns all seeded call history (seed_calls.sql / seed_calls_2.sql).
+INSERT INTO users (id, full_name, email) VALUES
+(5, 'Demo Collector', 'demo.collector@acmecollections.com');

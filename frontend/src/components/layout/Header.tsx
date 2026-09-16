@@ -1,13 +1,12 @@
 const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
 
 interface Props {
-  user?: { full_name: string };
-  onLogout?: () => void;
+  collectorName?: string;
 }
 
-export default function Header({ user, onLogout }: Props) {
+export default function Header({ collectorName }: Props) {
   const title = useDummyData ? "All Accounts" : "All Accounts";
-  const userName = user?.full_name || "Agent";
+  const userName = collectorName || "Demo Collector";
 
   return (
     <div
@@ -54,14 +53,6 @@ export default function Header({ user, onLogout }: Props) {
               </div>
               <span className="text-sm font-medium">{userName}</span>
             </button>
-            {onLogout && (
-              <button
-                onClick={onLogout}
-                className="px-3 py-1.5 text-xs text-gray-500 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-              >
-                Logout
-              </button>
-            )}
           </div>
         </div>
       </div>

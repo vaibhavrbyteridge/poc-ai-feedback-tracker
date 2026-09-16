@@ -1,5 +1,19 @@
 const API_BASE = "";
 
+// ─── Single hardcoded collector ──────────────────────────────────────────
+// This POC has exactly ONE collector. There is no login or user selection.
+// COLLECTOR.id matches the demo collector row seeded in the database, so all
+// call history, scoring, and performance data is scoped to this collector.
+export interface Collector {
+  id: number;
+  full_name: string;
+}
+
+export const COLLECTOR: Collector = {
+  id: 5,
+  full_name: "Demo Collector",
+};
+
 export interface Customer {
   id: string;
   name: string;
@@ -177,73 +191,6 @@ export async function fetchOpeningSuggestions(
 }
 
 
-// ─── Auth ───────────────────────────────────────────────────────────────
-
-export interface User {
-  id: number;
-  username: string;
-  full_name: string;
-  role: "admin" | "agent";
-  email: string;
-}
-
-export async function login(username: string, password: string): Promise<User> {
-  const res = await fetch(`${API_BASE}/api/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.detail || "Login failed");
-  }
-  return res.json();
-}
-
-// ─── Agent CRUD ─────────────────────────────────────────────────────────
-
-export interface Agent {
-  id: number;
-  username: string;
-  full_name: string;
-  email: string;
-  is_active: boolean;
-  created_at?: string;
-}
-
-export async function fetchAgents(): Promise<Agent[]> {
-  const res = await fetch(`${API_BASE}/api/agents`);
-  if (!res.ok) throw new Error("Failed to load agents");
-  return res.json();
-}
-
-export async function createAgent(body: { username: string; password?: string; full_name: string; email?: string }): Promise<Agent> {
-  const res = await fetch(`${API_BASE}/api/agents`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.detail || "Failed to create agent");
-  }
-  return res.json();
-}
-
-export async function updateAgent(agentId: number, body: { full_name: string; email?: string; is_active?: boolean }): Promise<void> {
-  const res = await fetch(`${API_BASE}/api/agents/${agentId}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error("Failed to update agent");
-}
-
-export async function deleteAgent(agentId: number): Promise<void> {
-  const res = await fetch(`${API_BASE}/api/agents/${agentId}`, { method: "DELETE" });
-  if (!res.ok) throw new Error("Failed to delete agent");
-}
-
 // ─── Call History ────────────────────────────────────────────────────────
 
 export interface CallHistoryItem {
@@ -267,7 +214,7 @@ export async function fetchCallHistory(userId: number): Promise<CallHistoryItem[
 
 export async function saveCallHistory(body: {
   session_id: string;
-  user_id: number;
+  user_id?: number;
   customer_id: string;
   customer_name: string;
   personality_id: string;
@@ -278,7 +225,7 @@ export async function saveCallHistory(body: {
   const res = await fetch(`${API_BASE}/api/call-history`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    body: JSON.stringify({ user_id: COLLECTOR.id, ...body }),
   });
   if (!res.ok) throw new Error("Failed to save call");
 }
