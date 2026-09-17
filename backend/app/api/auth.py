@@ -1,4 +1,4 @@
-"""Call history, scoring, performance, and feedback API routes.
+﻿"""Call history, scoring, performance, and feedback API routes.
 
 This is a single-collector POC: there is no login, authentication, or
 multi-user management. All routes operate on behalf of the one hardcoded
@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
 from app.collector import COLLECTOR_ID
-from app.mysql_db import (
+from app.db import (
     save_call_session,
     get_user_call_sessions,
     get_call_session_turns,
@@ -49,11 +49,11 @@ async def save_call(body: SaveCallRequest):
     )
     # Store dialed phone
     if body.dialed_phone:
-        from app.mysql_db import _get_connection
+        from app.db import _get_connection
         conn = _get_connection()
         try:
-            with conn.cursor() as cur:
-                cur.execute("UPDATE call_sessions SET dialed_phone = %s WHERE session_id = %s", (body.dialed_phone, body.session_id))
+            cur = conn.cursor()
+            cur.execute("UPDATE call_sessions SET dialed_phone = ? WHERE session_id = ?", (body.dialed_phone, body.session_id))
         finally:
             conn.close()
     return {"message": "Call saved"}
@@ -93,7 +93,7 @@ class ScoreCallRequest(BaseModel):
 async def score_call_endpoint(body: ScoreCallRequest):
     """Score a call using AI and persist the result."""
     from app.services.call_scorer import score_call
-    from app.mysql_db import save_call_score, get_agent_performance, save_comparison_result, get_pending_feedbacks
+    from app.db import save_call_score, get_agent_performance, save_comparison_result, get_pending_feedbacks
 
     result = await score_call(body.turns, dialed_phone=body.dialed_phone)
 
@@ -123,18 +123,18 @@ async def score_call_endpoint(body: ScoreCallRequest):
     save_comparison_result(body.session_id, comparison)
 
     # Save action items
-    from app.mysql_db import save_action_items, save_edit_flags
+    from app.db import save_action_items, save_edit_flags
     action_items = result.get("action_items", [])
     if action_items:
         # Need customer_id and dialed_phone — fetch from session
-        from app.mysql_db import _get_connection
+        from app.db import _get_connection
         conn = _get_connection()
         try:
-            with conn.cursor() as cur:
-                cur.execute("SELECT customer_id, dialed_phone FROM call_sessions WHERE session_id = %s", (body.session_id,))
-                row = cur.fetchone()
-                customer_id = row["customer_id"] if row else ""
-                dialed_phone = row["dialed_phone"] if row else ""
+            cur = conn.cursor()
+            cur.execute("SELECT customer_id, dialed_phone FROM call_sessions WHERE session_id = ?", (body.session_id,))
+            row = cur.fetchone()
+            customer_id = row["customer_id"] if row else ""
+            dialed_phone = row["dialed_phone"] if row else ""
         finally:
             conn.close()
         save_action_items(body.session_id, body.user_id, customer_id, action_items)
@@ -208,7 +208,7 @@ async def score_call_endpoint(body: ScoreCallRequest):
 @router.get("/call-score/{session_id}")
 async def get_call_score_endpoint(session_id: str):
     """Get the stored scoring result for a call."""
-    from app.mysql_db import get_call_score
+    from app.db import get_call_score
     result = get_call_score(session_id)
     if not result:
         return {"scored": False}
@@ -218,16 +218,16 @@ async def get_call_score_endpoint(session_id: str):
 @router.delete("/call-score/{session_id}")
 async def delete_call_score_endpoint(session_id: str):
     """Delete the stored scoring result for a call, plus clear edit flags and action items."""
-    from app.mysql_db import delete_call_score, _get_connection
+    from app.db import delete_call_score, _get_connection
     deleted = delete_call_score(session_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Score not found")
     # Clear edit flags and action items for this session
     conn = _get_connection()
     try:
-        with conn.cursor() as cur:
-            cur.execute("DELETE FROM call_edit_flags WHERE session_id = %s", (session_id,))
-            cur.execute("DELETE FROM action_items WHERE session_id = %s", (session_id,))
+        cur = conn.cursor()
+        cur.execute("DELETE FROM call_edit_flags WHERE session_id = ?", (session_id,))
+        cur.execute("DELETE FROM action_items WHERE session_id = ?", (session_id,))
     finally:
         conn.close()
     return {"message": "Score, flags, and action items deleted"}
@@ -236,7 +236,7 @@ async def delete_call_score_endpoint(session_id: str):
 @router.get("/agent-performance/{user_id}")
 async def get_agent_performance_endpoint(user_id: int):
     """Get aggregate performance scores for an agent."""
-    from app.mysql_db import get_agent_performance
+    from app.db import get_agent_performance
     return get_agent_performance(user_id)
 
 
@@ -244,7 +244,7 @@ async def get_agent_performance_endpoint(user_id: int):
 
 @router.get("/feedbacks/{user_id}")
 async def get_feedbacks(user_id: int):
-    from app.mysql_db import get_agent_feedbacks
+    from app.db import get_agent_feedbacks
     return get_agent_feedbacks(user_id)
 
 
@@ -257,7 +257,7 @@ class CreateFeedbackRequest(BaseModel):
 
 @router.post("/feedbacks")
 async def create_feedback_endpoint(body: CreateFeedbackRequest):
-    from app.mysql_db import create_feedback
+    from app.db import create_feedback
     return create_feedback(body.user_id, body.session_id, body.feedback_text, body.target_days)
 
 
@@ -267,7 +267,7 @@ class UpdateFeedbackRequest(BaseModel):
 
 @router.put("/feedbacks/{feedback_id}")
 async def update_feedback_endpoint(feedback_id: int, body: UpdateFeedbackRequest):
-    from app.mysql_db import update_feedback_status
+    from app.db import update_feedback_status
     if body.status not in ("open", "in_progress", "completed"):
         raise HTTPException(status_code=400, detail="Invalid status")
     updated = update_feedback_status(feedback_id, body.status)
@@ -282,7 +282,7 @@ class RejectFeedbackRequest(BaseModel):
 
 @router.post("/feedbacks/{feedback_id}/reject")
 async def reject_feedback_endpoint(feedback_id: int, body: RejectFeedbackRequest):
-    from app.mysql_db import reject_feedback
+    from app.db import reject_feedback
     rejected = reject_feedback(feedback_id, body.reason)
     if not rejected:
         raise HTTPException(status_code=404, detail="Feedback not found")
@@ -293,7 +293,7 @@ async def reject_feedback_endpoint(feedback_id: int, body: RejectFeedbackRequest
 
 @router.get("/weekly-performance/{user_id}")
 async def get_weekly_performance_endpoint(user_id: int):
-    from app.mysql_db import get_call_scores_timeline
+    from app.db import get_call_scores_timeline
     return get_call_scores_timeline(user_id)
 
 
@@ -301,7 +301,7 @@ async def get_weekly_performance_endpoint(user_id: int):
 
 @router.get("/ai-feedback/{user_id}")
 async def get_ai_feedback_endpoint(user_id: int):
-    from app.mysql_db import get_ai_feedback
+    from app.db import get_ai_feedback
     result = get_ai_feedback(user_id)
     if not result:
         return {"feedback": None, "updated_at": None}
@@ -311,7 +311,7 @@ async def get_ai_feedback_endpoint(user_id: int):
 @router.post("/ai-feedback/{user_id}/generate")
 async def generate_ai_feedback_endpoint(user_id: int):
     """Generate AI feedback based on agent's overall performance."""
-    from app.mysql_db import get_agent_performance, save_ai_feedback, get_pending_feedbacks
+    from app.db import get_agent_performance, save_ai_feedback, get_pending_feedbacks
     from app.services.call_scorer import generate_agent_feedback
 
     perf = get_agent_performance(user_id)
@@ -331,7 +331,7 @@ class DispositionRequest(BaseModel):
 
 @router.put("/call-disposition/{session_id}")
 async def save_disposition(session_id: str, body: DispositionRequest):
-    from app.mysql_db import save_call_disposition
+    from app.db import save_call_disposition
     updated = save_call_disposition(session_id, body.disposition, body.call_type, body.notes)
     if not updated:
         raise HTTPException(status_code=404, detail="Call not found")
@@ -340,7 +340,7 @@ async def save_disposition(session_id: str, body: DispositionRequest):
 
 @router.get("/call-disposition/{session_id}")
 async def get_disposition(session_id: str):
-    from app.mysql_db import get_call_disposition
+    from app.db import get_call_disposition
     result = get_call_disposition(session_id)
     return result or {"disposition": None, "call_type": "Outbound", "notes": ""}
 
@@ -349,27 +349,27 @@ async def get_disposition(session_id: str):
 
 @router.get("/action-items/{session_id}")
 async def get_action_items(session_id: str):
-    from app.mysql_db import get_action_items_for_session
+    from app.db import get_action_items_for_session
     return get_action_items_for_session(session_id)
 
 
 @router.get("/action-items/customer/{user_id}/{customer_id}")
 async def get_customer_action_items(user_id: int, customer_id: str):
-    from app.mysql_db import get_pending_action_items_for_customer
+    from app.db import get_pending_action_items_for_customer
     return get_pending_action_items_for_customer(user_id, customer_id)
 
 
 @router.put("/action-items/{item_id}/complete")
 async def complete_action_item_endpoint(item_id: int):
-    from app.mysql_db import complete_action_item, clear_edit_flag, _get_connection
+    from app.db import complete_action_item, clear_edit_flag, _get_connection
     import json as _json
 
     # Get the action item details before completing
     conn = _get_connection()
     try:
-        with conn.cursor() as cur:
-            cur.execute("SELECT session_id, field_name, field_category FROM action_items WHERE id = %s", (item_id,))
-            item = cur.fetchone()
+        cur = conn.cursor()
+        cur.execute("SELECT session_id, field_name, field_category FROM action_items WHERE id = ?", (item_id,))
+        item = cur.fetchone()
     finally:
         conn.close()
 
@@ -420,13 +420,13 @@ async def complete_action_item_endpoint(item_id: int):
 
 @router.get("/edit-flags/{user_id}/{customer_id}")
 async def get_edit_flags(user_id: int, customer_id: str):
-    from app.mysql_db import get_edit_flags_for_customer
+    from app.db import get_edit_flags_for_customer
     return get_edit_flags_for_customer(user_id, customer_id)
 
 
 @router.put("/edit-flags/{session_id}/clear/{flag_name}")
 async def clear_flag(session_id: str, flag_name: str):
-    from app.mysql_db import clear_edit_flag
+    from app.db import clear_edit_flag
     cleared = clear_edit_flag(session_id, flag_name)
     if not cleared:
         raise HTTPException(status_code=404, detail="Flag not found")
@@ -437,7 +437,7 @@ async def clear_flag(session_id: str, flag_name: str):
 
 @router.get("/contact-preferences/{customer_id}")
 async def get_prefs(customer_id: str):
-    from app.mysql_db import get_contact_preferences
+    from app.db import get_contact_preferences
     result = get_contact_preferences(customer_id)
     if not result:
         return {"cease_all_calls": False, "cease_all_texts": False, "cease_all_emails": False, "cease_all_contact": False}
@@ -456,7 +456,7 @@ class ContactPrefsRequest(BaseModel):
 
 @router.put("/contact-preferences/{customer_id}")
 async def save_prefs(customer_id: str, body: ContactPrefsRequest):
-    from app.mysql_db import save_contact_preferences
+    from app.db import save_contact_preferences
     save_contact_preferences(customer_id, body.user_id, body.session_id, body.cease_all_calls, body.cease_all_texts, body.cease_all_emails, body.cease_all_contact, body.reason)
     return {"message": "Preferences saved"}
 
@@ -472,7 +472,7 @@ class AcceptAllRequest(BaseModel):
 @router.post("/action-items/accept-all")
 async def accept_all_action_items(body: AcceptAllRequest):
     """Apply all pending action items automatically and mark them as done."""
-    from app.mysql_db import _get_connection, complete_action_item, clear_edit_flag, save_contact_preferences
+    from app.db import _get_connection, complete_action_item, clear_edit_flag, save_contact_preferences
     from app.paths import data_dir
     from app.config import get_settings
     import json as _json
@@ -483,18 +483,18 @@ async def accept_all_action_items(body: AcceptAllRequest):
     # Get all pending action items for this session
     conn = _get_connection()
     try:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT id, action_text, field_category, field_name, field_value FROM action_items "
-                "WHERE session_id = %s AND status = 'pending'",
-                (body.session_id,),
-            )
-            pending_items = cur.fetchall()
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT id, action_text, field_category, field_name, field_value FROM action_items "
+            "WHERE session_id = ? AND status = 'pending'",
+            (body.session_id,),
+        )
+        pending_items = cur.fetchall()
 
-            # Get dialed phone
-            cur.execute("SELECT dialed_phone FROM call_sessions WHERE session_id = %s", (body.session_id,))
-            session_row = cur.fetchone()
-            dialed_phone = session_row["dialed_phone"] if session_row else ""
+        # Get dialed phone
+        cur.execute("SELECT dialed_phone FROM call_sessions WHERE session_id = ?", (body.session_id,))
+        session_row = cur.fetchone()
+        dialed_phone = session_row["dialed_phone"] if session_row else ""
     finally:
         conn.close()
 
@@ -580,11 +580,11 @@ async def accept_all_action_items(body: AcceptAllRequest):
                 if field_value:
                     conn2 = _get_connection()
                     try:
-                        with conn2.cursor() as cur2:
-                            cur2.execute(
-                                "UPDATE call_sessions SET disposition = %s WHERE session_id = %s",
-                                (field_value, body.session_id),
-                            )
+                        cur2 = conn2.cursor()
+                        cur2.execute(
+                            "UPDATE call_sessions SET disposition = ? WHERE session_id = ?",
+                            (field_value, body.session_id),
+                        )
                     finally:
                         conn2.close()
 
@@ -602,8 +602,8 @@ async def accept_all_action_items(body: AcceptAllRequest):
     # Clear all edit flags for this session
     conn3 = _get_connection()
     try:
-        with conn3.cursor() as cur3:
-            cur3.execute("DELETE FROM call_edit_flags WHERE session_id = %s", (body.session_id,))
+        cur3 = conn3.cursor()
+        cur3.execute("DELETE FROM call_edit_flags WHERE session_id = ?", (body.session_id,))
     finally:
         conn3.close()
 

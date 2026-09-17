@@ -1,4 +1,4 @@
-from functools import lru_cache
+﻿from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,12 +15,9 @@ class Settings(BaseSettings):
     # Reasoning effort for gpt-oss models: none | default | low | medium | high.
     # Low keeps latency down for real-time turns; scoring overrides to a higher value.
     groq_reasoning_effort: str = "low"
-    database_url: str = "postgresql://postgres:postgres@localhost:5432/debt_sim"
-    mysql_host: str = "localhost"
-    mysql_port: int = 3306
-    mysql_user: str = "root"
-    mysql_password: str = "test"
-    mysql_database: str = "performance_coaching"
+    # SQLite database file path. Empty string means "use the default location"
+    # (<data_dir>/app.db), resolved in app.db._db_path().
+    sqlite_path: str = ""
     cors_origins: str = "http://localhost:5173"
     force_mock_stt: bool = False
     force_mock_llm: bool = False
