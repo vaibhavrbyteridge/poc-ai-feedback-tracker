@@ -1,7 +1,7 @@
 [
   {
     "accountInfo": {
-      "accountHolder": "Rohan Verma",
+      "accountHolder": "Jacob John",
       "accountId": "c105471b-a346-4ec8-b55a-526e2d6a3001",
       "accountNumber": "RV-4102",
       "accountType": "Credit Card",
@@ -30,7 +30,7 @@
         "installmentsPaid": 6,
         "installmentsRemaining": 30,
         "lastPaymentDate": "2026-06-10",
-        "monthlyInstallment": 400,
+        "monthlyInstallment": 800.0,
         "nextPaymentDate": "2025-12-10",
         "paymentDay": 10,
         "paymentMethod": "Credit Card",
@@ -41,16 +41,16 @@
       "status": "Delinquent"
     },
     "basicInfo": {
-      "address": "22 Brigade Road, Flat 3A",
+      "address": "23 MG Road, Sector 14, Gurgaon",
       "address2": "Flat 6B",
       "cPhone": 9886541230,
       "city": "Bengaluru",
       "country": "India",
       "description": "Credit card debt collection",
       "dob": "1986-09-12T00:00:00",
-      "email": "rohan.verma@email.com",
+      "email": "rohan.verma.updated@gmail.com",
       "fullAddress": "14 MG Road Flat 6B Bengaluru KA 560001",
-      "fullName": "Rohan Verma",
+      "fullName": "Jacob John",
       "hPhone": 9845123670,
       "langCode": "ENG",
       "language": "English",
@@ -138,7 +138,7 @@
           "id": "u-9001",
           "lastName": "Iyer"
         },
-        "description": "TODO: Schedule review meeting with Rohan Verma today (2025-11-24) to discuss December payment plan and confirm hardship program eligibility. Send calendar invite by 4 PM.",
+        "description": "TODO: Schedule review meeting with Jacob John today (2025-11-24) to discuss December payment plan and confirm hardship program eligibility. Send calendar invite by 4 PM.",
         "descriptionType": "Action Required",
         "id": "note-rv-010",
         "isPinned": true,
@@ -223,7 +223,7 @@
           "id": "u-9001",
           "lastName": "Iyer"
         },
-        "description": "TODO: Call back Rohan Verma at 6:00 PM IST today (2025-09-15) to discuss payment arrangement options. Mention hardship program eligibility.",
+        "description": "TODO: Call back Jacob John at 6:00 PM IST today (2025-09-15) to discuss payment arrangement options. Mention hardship program eligibility.",
         "descriptionType": "Action Required",
         "id": "note-rv-005",
         "isPinned": true,
@@ -287,8 +287,8 @@
     "phone_numbers": [
       {
         "phone": "9886541230",
-        "contact_name": "Rohan Verma",
-        "email": "rohan.verma@email.com",
+        "contact_name": "Jacob John",
+        "email": "rohan.verma.updated@gmail.com",
         "type": "Cell Phone",
         "status": "Active",
         "timezone": "IST",
@@ -299,7 +299,7 @@
       },
       {
         "phone": "9886541231",
-        "contact_name": "Rohan V",
+        "contact_name": "Jacob J",
         "email": "",
         "type": "Home Phone",
         "status": "Active",
@@ -311,8 +311,8 @@
       },
       {
         "phone": "9886541232",
-        "contact_name": "Meera Verma",
-        "email": "meera.v@email.com",
+        "contact_name": "Meera John",
+        "email": "meera.j@email.com",
         "type": "Cell Phone",
         "status": "Active",
         "timezone": "IST",
@@ -334,7 +334,7 @@
   },
   {
     "accountInfo": {
-      "accountHolder": "Priyanka Reddy",
+      "accountHolder": "Will Jackson",
       "accountId": "c205471b-a346-4ec8-b55a-526e2d6a3002",
       "accountNumber": "PR-6104",
       "accountType": "Personal Loann",
@@ -381,9 +381,9 @@
       "country": "India",
       "description": "Personal loan default",
       "dob": "1989-12-20T00:00:00",
-      "email": "priyanka.reddy.only@yahoo.com",
+      "email": "will.jackson@email.com",
       "fullAddress": "27 Banjara Hills Road Tower B, Floor 9 Hyderabad TG 500034",
-      "fullName": "Priyanka Reddy",
+      "fullName": "Will Jackson",
       "hPhone": 9923456781,
       "langCode": "ENG",
       "language": "Kannada",
@@ -454,7 +454,7 @@
           "id": "u-9002",
           "lastName": "Rao"
         },
-        "description": "TODO: Call Priyanka Reddy today (2025-11-28) at 3 PM IST to confirm settlement arrangement is on track. Document commitment and schedule next review for 2025-12-12.",
+        "description": "TODO: Call Will Jackson today (2025-11-28) at 3 PM IST to confirm settlement arrangement is on track. Document commitment and schedule next review for 2025-12-12.",
         "descriptionType": "Action Required",
         "id": "note-pr-010",
         "isPinned": true,
@@ -471,7 +471,7 @@
           "id": "u-9002",
           "lastName": "Rao"
         },
-        "description": "TODO: Prepare updated settlement agreement documentation for Priyanka Reddy today (2025-11-28). Include payment schedule and terms. Send by EOD.",
+        "description": "TODO: Prepare updated settlement agreement documentation for Will Jackson today (2025-11-28). Include payment schedule and terms. Send by EOD.",
         "descriptionType": "Action Required",
         "id": "note-pr-009",
         "isPinned": true,
@@ -642,8 +642,8 @@
     "phone_numbers": [
       {
         "phone": "9912345678",
-        "contact_name": "Priyanka ",
-        "email": "priyanka.reddy@email.com",
+        "contact_name": "Will Jackson",
+        "email": "will.jackson@email.com",
         "type": "Cell Phone",
         "status": "Active",
         "timezone": "IST",
@@ -653,7 +653,7 @@
       },
       {
         "phone": "9912345670",
-        "contact_name": "Priyanka R",
+        "contact_name": "Will J",
         "email": "",
         "type": "Work Phone",
         "status": "Active",
@@ -664,8 +664,8 @@
       },
       {
         "phone": "9912345680",
-        "contact_name": "Raj Reddy",
-        "email": "priyanka.new@gmail.com",
+        "contact_name": "Raj Jackson",
+        "email": "will.new@gmail.com",
         "type": "Cell Phone",
         "status": "Inactive",
         "timezone": "IST",
@@ -693,7 +693,7 @@
   },
   {
     "accountInfo": {
-      "accountHolder": "Arjun Nair",
+      "accountHolder": "Bob David",
       "accountId": "c305471b-a346-4ec8-b55a-526e2d6a3003",
       "accountNumber": "AN-8107",
       "accountType": "Auto Loan",
@@ -740,9 +740,9 @@
       "country": "India",
       "description": "Auto loan default",
       "dob": "1994-05-08T00:00:00",
-      "email": "arjun.nair@email.com",
+      "email": "bob.david@email.com",
       "fullAddress": "9 Anna Salai Block C, Unit 3 Chennai TN 600002",
-      "fullName": "Arjun Nair",
+      "fullName": "Bob David",
       "hPhone": 9445678231,
       "langCode": "ENG",
       "language": "English",
@@ -796,7 +796,7 @@
           "id": "u-9003",
           "lastName": "Kulkarni"
         },
-        "description": "Called at 9445678231. Reached debtor. Arjun explained unexpected auto repair costs ($2,800) required for engine work. Committed to catching up on payments starting January 5th.",
+        "description": "Called at 9445678231. Reached debtor. Bob explained unexpected auto repair costs ($2,800) required for engine work. Committed to catching up on payments starting January 5th.",
         "descriptionType": "Communication",
         "id": "note-an-003",
         "isPinned": true,
@@ -864,7 +864,7 @@
           "id": "u-9003",
           "lastName": "Kulkarni"
         },
-        "description": "TODO: Call Arjun Nair today (2026-01-15) at 11 AM IST to confirm final double payment arrangements for February 5th. Send calendar reminder.",
+        "description": "TODO: Call Bob David today (2026-01-15) at 11 AM IST to confirm final double payment arrangements for February 5th. Send calendar reminder.",
         "descriptionType": "Action Required",
         "id": "note-an-008",
         "isPinned": true,
@@ -881,7 +881,7 @@
           "id": "u-9003",
           "lastName": "Kulkarni"
         },
-        "description": "TODO: Verify double payment of $992 received by 2026-01-10. If received, send confirmation. If not, call Arjun immediately to discuss alternative arrangements.",
+        "description": "TODO: Verify double payment of $992 received by 2026-01-10. If received, send confirmation. If not, call Bob immediately to discuss alternative arrangements.",
         "descriptionType": "Action Required",
         "id": "note-an-007",
         "isPinned": true,
@@ -945,8 +945,8 @@
     "phone_numbers": [
       {
         "phone": "9445123890",
-        "contact_name": "Arjun Nair",
-        "email": "arjun.nair@email.com",
+        "contact_name": "Bob David",
+        "email": "bob.david@email.com",
         "type": "Cell Phone",
         "status": "Active",
         "timezone": "IST",
@@ -957,8 +957,8 @@
       },
       {
         "phone": "9445123891",
-        "contact_name": "Arjun Nair",
-        "email": "arjun.work@company.com",
+        "contact_name": "Bob David",
+        "email": "bob.work@company.com",
         "type": "Work Phone",
         "status": "Active",
         "timezone": "IST",
@@ -969,8 +969,8 @@
       },
       {
         "phone": "9445123892",
-        "contact_name": "Lakshmi Nair",
-        "email": "lakshmi.n@email.com",
+        "contact_name": "Lakshmi David",
+        "email": "lakshmi.d@email.com",
         "type": "Home Phone",
         "status": "Active",
         "timezone": "IST",
